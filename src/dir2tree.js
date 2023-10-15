@@ -131,5 +131,11 @@ class Dir2Tree {
       return subtree[currentKey];
     }, this.tree);
   }
+  write(filename) {
+    const jsonTree = JSON.stringify(this.tree, null, 2); 
+    fs.writeFileSync(filename, jsonTree, 'utf8');
+    console.log(`Tree written to ${filename}`);
+    return this;
+  }
 }
 module.exports = Dir2Tree;
