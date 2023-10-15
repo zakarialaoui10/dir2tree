@@ -12,7 +12,7 @@ const dir2tree=require("dir2tree")
 import dir2tree from dir2tree
 ```
 # Syntaxe
-```
+```js
 const MyTree=dire2tree(ROOT,OPTIONS,CALLBACKS)
 MyTree.write("generated_file.json")
 ```
