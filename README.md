@@ -1,5 +1,7 @@
 # Install
-`npm install dir2tree`
+```bash
+npm install dir2tree
+```
 # Import
 ## Common Js
 ```js
