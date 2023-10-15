@@ -100,21 +100,11 @@ class Dir2Tree {
         return this
       }
       const fileName = path.parse(file).name;
-      //const shouldSkip = shouldSkipPath.call(this,filePath);
       if (shouldSkipPath.call(this, filePath)) return;
-      if (fileStats.isDirectory()) {
-        const subDirectory = new Dir2Tree(
-          filePath,
-          this.options,
-          this.callbacks
-        );
-        const subTree = subDirectory.generate();
-        add_to_tree.call(this,this.tree,subTree.tree);
-      } else {
         if (this.options?.fileContent) {
           this.addFileInfo(filePath, fileName);
         }
-      }
+      
     });
     //this.tree=tree;
     return this.tree;
