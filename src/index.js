@@ -9,6 +9,15 @@ function shouldSkipPath(filePath){
 )return true;
 return false;
 }
+function file_metadata(filePath){
+  const stats = fs.statSync(filePath);
+      const metadata = {
+        created: stats.birthtime,
+        modified: stats.mtime,
+        permissions: stats.mode,
+      };
+      return metadata;
+}
 function filter_files(files){
   return files.filter((file) => {
     const filePath = path.join(this.root, file);
@@ -16,21 +25,28 @@ function filter_files(files){
     return !shouldSkip;
   });
 }
-function sort_files(files){
+function sort_files(files,order=1){
   return files.sort((a, b) => {
     const filePathA = path.join(this.root, a);
     const filePathB = path.join(this.root, b);
     const statsA = fs.statSync(filePathA);
     const statsB = fs.statSync(filePathB);
+    const extensionA = path.extname(filePathA).slice(1); 
+    const extensionB = path.extname(filePathB).slice(1);
+    const linesA = fs.readFileSync(filePathA, 'utf8').split('\n').length;
+    const linesB = fs.readFileSync(filePathB, 'utf8').split('\n').length;
 
     // Customize sorting based on sortBy option (name, size, modified, etc.)
-    if (this.sortBy === 'name') {
-      return a.localeCompare(b);
-    } else if (this.sortBy === 'size') {
-      return statsA.size - statsB.size;
-    } else if (this.sortBy === 'modified') {
-      return statsA.mtime.getTime() - statsB.mtime.getTime();
+    switch(this.sortBy){
+      case "name":return order*a.localeCompare(b);
+      case "size":return order*(statsA.size - statsB.size);
+      case "modified":return order*(statsA.mtime.getTime() - statsB.mtime.getTime());
+      case "extension":return order*extensionA.localeCompare(extensionB);
+      case "lines":return order*(linesA - linesB);
     }
+    //if(this.sortBy === 'name') return a.localeCompare(b);
+    //if(this.sortBy === 'size') return statsA.size - statsB.size;
+    //else if (this.sortBy === 'modified')return statsA.mtime.getTime() - statsB.mtime.getTime();
     // Add other sorting options as needed
 
     return 0; // No sorting
@@ -82,7 +98,7 @@ class Dir2Tree {
           const [name,extension]=fullName.split(".");
           const length=fs.statSync(filePath).size;
           const lines=content.split("\n").length;
-          const metadata = this.getMetadata(filePath);
+          const metadata = file_metadata.call(this,filePath);
           if(this.options?.fileContent)Object.assign(fileInfo,{content}); 
           if(this.options?.fileExtension)Object.assign(fileInfo,{extension});
           if(this.options?.fileName)Object.assign(fileInfo,{name});  
