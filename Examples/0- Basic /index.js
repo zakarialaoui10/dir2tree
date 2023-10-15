@@ -1,3 +1,4 @@
+/*
 const fs = require('fs');
 const path = require('path');
 const dir2tree=require("../index.js")
@@ -16,3 +17,5 @@ tree.write("gen.json")
 //console.log(tree);
 //console.log(1111111111111)
 //console.log(asm)
+*/
+console.log(1)
