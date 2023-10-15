@@ -20,5 +20,14 @@ MyTree.write("generated_file.json")
 ## Arguments
 - **`ROOT`** : The path to the root directory that we want handle. it's ***`required`***
 - **`OPTIONS`** : An object containing various configuration options to control the behavior of the tree generation.it's ***`optional`*** , These options might include :
-  - `haha` 
+  - `fileContent`
+  - `fileName`
+  - `fileExtension`
+  - `stats`:
+    - `length`
+    - `size`
+    - `lines`
+  - `metadata`
+  - `sortBy`
+  - `order`
 - **`CALLBACKS`** : it's ***`optional`*** 
