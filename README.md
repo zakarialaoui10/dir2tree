@@ -18,6 +18,6 @@ const MyTree=dire2tree(ROOT,OPTIONS,CALLBACKS)
 MyTree.write("generated_file.json")
 ```
 ## Arguments
-- `ROOT` : The root path of the directory
+- `ROOT` : the path to the root directory that we want handle. it's `required`
 - `OPTIONS`:
 - `CALLBACKS`
