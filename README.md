@@ -30,4 +30,5 @@ MyTree.write("generated_file.json")
   - **`modified`** : (***Boolean***)
   - **`sortBy`** : (***String***)
   - **`order`** : (***Number***)
-- **`CALLBACKS`** : it's ***`optional`*** 
+- **`CALLBACKS`** : it's ***`optional`***
+## Methodes
