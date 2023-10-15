@@ -37,19 +37,16 @@ function sort_files(files,order=1){
     const linesB = fs.readFileSync(filePathB, 'utf8').split('\n').length;
 
     // Customize sorting based on sortBy option (name, size, modified, etc.)
-    switch(this.sortBy){
+    switch(this.sortBy.toLowerCase()){
       case "name":return order*a.localeCompare(b);
       case "size":return order*(statsA.size - statsB.size);
+      case "created":return order*(statsA.birthtime- statsB.birthtime);
       case "modified":return order*(statsA.mtime.getTime() - statsB.mtime.getTime());
       case "extension":return order*extensionA.localeCompare(extensionB);
       case "lines":return order*(linesA - linesB);
+      case "path":return order*filePathB.localeCompare(filePathA);
+      default : return 0
     }
-    //if(this.sortBy === 'name') return a.localeCompare(b);
-    //if(this.sortBy === 'size') return statsA.size - statsB.size;
-    //else if (this.sortBy === 'modified')return statsA.mtime.getTime() - statsB.mtime.getTime();
-    // Add other sorting options as needed
-
-    return 0; // No sorting
   });
 }
 class Dir2Tree {
@@ -119,15 +116,6 @@ class Dir2Tree {
         }
         return subtree[currentKey];
       }, this.tree);
-    }
-    getMetadata(filePath) {
-      const stats = fs.statSync(filePath);
-      const metadata = {
-        created: stats.birthtime,
-        modified: stats.mtime,
-        permissions: stats.mode,
-      };
-      return metadata;
     }
   }
 const dir2tree=(root, options, callbacks)=>new Dir2Tree(root, options, callbacks);
