@@ -8,3 +8,6 @@ npm install dir2tree
 const dir2tree=require("dir2tree")
 ```
 ## Es Module
+```js
+import dir2tree from dir2tree
+```
