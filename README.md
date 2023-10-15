@@ -36,3 +36,4 @@ MyTree.write("generated_file.json")
   - **`order`** : (***Number***)
 - **`CALLBACKS`** : it's ***`optional`***
 ## Methodes
+- **`write(file_name)`**
