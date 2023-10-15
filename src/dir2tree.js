@@ -60,6 +60,17 @@ function sort_files(files, order = 1) {
     }
   });
 }
+
+function add_to_tree(key, value) {
+  const keys = key.split(path.sep);
+  const lastKeyIndex = keys.length - 1;
+  keys.reduce((subtree, currentKey, index) => {
+    if (!subtree[currentKey]) {
+      subtree[currentKey] = index === lastKeyIndex ? value : {};
+    }
+    return subtree[currentKey];
+  }, this.tree);
+}
 class Dir2Tree {
   constructor(root, options = {}, callbacks = {}) {
     this.root = root;
@@ -85,8 +96,7 @@ class Dir2Tree {
           this.options,
           this.callbacks
         );
-        console.log(subDirectory.tree)
-        Object.assign(this.tree,{ziko:subDirectory.tree})
+        Object.assign(this.tree,{[path.basename(filePath)]:subDirectory.tree})
         return this
       }
       const fileName = path.parse(file).name;
@@ -99,7 +109,7 @@ class Dir2Tree {
           this.callbacks
         );
         const subTree = subDirectory.generate();
-        this.addToTree(this.tree,subTree.tree);
+        add_to_tree.call(this,this.tree,subTree.tree);
       } else {
         if (this.options?.fileContent) {
           this.addFileInfo(filePath, fileName);
@@ -127,18 +137,9 @@ class Dir2Tree {
     Object.assign(fileInfo, { stats });
     Object.assign(fileInfo, { metadata });
     this?.callbacks?.map((n) => n(filePath, fileInfo));
-    this.addToTree(fileName, fileInfo);
+    add_to_tree.call(this,fileName, fileInfo);
   }
-  addToTree(key, value) {
-    const keys = key.split(path.sep);
-    const lastKeyIndex = keys.length - 1;
-    keys.reduce((subtree, currentKey, index) => {
-      if (!subtree[currentKey]) {
-        subtree[currentKey] = index === lastKeyIndex ? value : {};
-      }
-      return subtree[currentKey];
-    }, this.tree);
-  }
+  
   write(filename) {
     const jsonTree = JSON.stringify(this.tree, null, 2); // Pretty-print the JSON
     fs.writeFileSync(filename, jsonTree, 'utf8');
