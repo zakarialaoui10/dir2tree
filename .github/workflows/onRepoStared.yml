@@ -1,15 +1,18 @@
 # This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: Starred CI
+ 
+name: Node.js CI
 
 on:
-   watch:
-    action: started
-    
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ] 
+
 jobs:
   build:
-    runs-on: ubunto-latest
+
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
@@ -25,3 +28,4 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm start 
+    - run: echo "done"
