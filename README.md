@@ -28,7 +28,7 @@ MyTree.write("generated_file.json")
   - **`linesCount`** : (***Boolean***)
   - **`created`** : (***Boolean***)
   - **`lastModified`** : (***Boolean***)
-  - **`sortBy`** : (***String***)
+  - **`sortBy`** : (***String***) , possible values : `"name"|"size"|"lines"`
   - **`order`** : (***Number***)
 - **`CALLBACKS`** : it's ***`optional`***
 ## Methodes
