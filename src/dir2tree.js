@@ -21,8 +21,14 @@ function file_metadata(filePath) {
   };
   return metadata;
 }
+function isDirectory(filePath) {
+  return fs.statSync(filePath).isDirectory();
+}
 function filter_files(files) {
   return files.filter((file) => {
+    if (isDirectory(path.join(this.root, file))) {
+      return true; // Skip directories
+    }
     const filePath = path.join(this.root, file);
     const shouldSkip = shouldSkipPath.call(this, filePath);
     return !shouldSkip;
@@ -84,10 +90,11 @@ class Dir2Tree {
     const stats = fs.statSync(this.root);
     if (!stats.isDirectory()) return null;
     const files = fs.readdirSync(this.root);
-    //const FILTRED_FILES = filter_files.call(this, files);
+    const FILTRED_FILES = filter_files.call(this, files);
+    console.log(FILTRED_FILES)
     //const SORTED_FILES = sort_files.call(this, FILTRED_FILES);
 
-    files.forEach((file) => {
+    FILTRED_FILES.forEach((file) => {
       const filePath = path.join(this.root, file);
       const fileStats = fs.statSync(filePath);
       if(fileStats.isDirectory()){
