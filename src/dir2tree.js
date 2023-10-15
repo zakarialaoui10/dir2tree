@@ -73,14 +73,22 @@ class Dir2Tree {
     const stats = fs.statSync(this.root);
     if (!stats.isDirectory()) return null;
     const files = fs.readdirSync(this.root);
-    // Filter files and directories based on options
-    const FILTRED_FILES = filter_files.call(this, files);
-    // Sort the filtered files and directories
-    const SORTED_FILES = sort_files.call(this, FILTRED_FILES);
+    //const FILTRED_FILES = filter_files.call(this, files);
+    //const SORTED_FILES = sort_files.call(this, FILTRED_FILES);
 
-    SORTED_FILES.forEach((file) => {
+    files.forEach((file) => {
       const filePath = path.join(this.root, file);
       const fileStats = fs.statSync(filePath);
+      if(fileStats.isDirectory()){
+        const subDirectory = new Dir2Tree(
+          filePath,
+          this.options,
+          this.callbacks
+        );
+        console.log(subDirectory.tree)
+        Object.assign(this.tree,{ziko:subDirectory.tree})
+        return this
+      }
       const fileName = path.parse(file).name;
       //const shouldSkip = shouldSkipPath.call(this,filePath);
       if (shouldSkipPath.call(this, filePath)) return;
@@ -91,7 +99,7 @@ class Dir2Tree {
           this.callbacks
         );
         const subTree = subDirectory.generate();
-        this.addToTree(this.tree, fileName, subTree);
+        this.addToTree(this.tree,subTree.tree);
       } else {
         if (this.options?.fileContent) {
           this.addFileInfo(filePath, fileName);
@@ -99,7 +107,7 @@ class Dir2Tree {
       }
     });
     //this.tree=tree;
-    return this;
+    return this.tree;
   }
   addFileInfo(filePath, fileName) {
     const content = fs.readFileSync(filePath, "utf8");
@@ -132,7 +140,7 @@ class Dir2Tree {
     }, this.tree);
   }
   write(filename) {
-    const jsonTree = JSON.stringify(this.tree, null, 2); 
+    const jsonTree = JSON.stringify(this.tree, null, 2); // Pretty-print the JSON
     fs.writeFileSync(filename, jsonTree, 'utf8');
     console.log(`Tree written to ${filename}`);
     return this;
