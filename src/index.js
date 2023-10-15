@@ -1,5 +1,16 @@
 const fs = require('fs');
 const path = require('path');
+function shouldSkipPath(filePath){
+  const normalizedPath = path.normalize(filePath);
+  if (
+  (this?.options?.skipFolder?.includes(path.basename(normalizedPath))) ||
+  (this?.options?.skipFile?.includes(path.basename(normalizedPath))) ||
+  (this?.options?.skipExtension?.includes(path.extname(normalizedPath).slice(1)))
+) {
+  return true;
+}  
+return false;
+}
 class Dir2Tree {
     constructor(root, options = {}={}, callbacks = {}) {
       this.root = root;
@@ -16,7 +27,7 @@ class Dir2Tree {
         const filePath = path.join(this.root, file);
         const fileStats = fs.statSync(filePath);
         const fileName = path.parse(file).name;
-        const shouldSkip = this.shouldSkipPath(filePath);
+        const shouldSkip = shouldSkipPath.call(this,filePath);
         if (shouldSkip)return;
         if (fileStats.isDirectory()) {
           const subDirectory = new Dir2Tree(filePath, this.options, this.callbacks);
@@ -59,17 +70,7 @@ class Dir2Tree {
         return subtree[currentKey];
       }, this.tree);
     }
-    shouldSkipPath(filePath) {
-      const normalizedPath = path.normalize(filePath);
-        if (
-        (this.options.skipFolder && this.options.skipFolder.includes(path.basename(normalizedPath))) ||
-        (this.options.skipFile && this.options.skipFile.includes(path.basename(normalizedPath))) ||
-        (this.options.skipExtension && this.options.skipExtension.includes(path.extname(normalizedPath).slice(1)))
-      ) {
-        return true;
-      }  
-      return false;
-    }
+    //shouldSkipPath(filePath) {}
   }
 const dir2tree=(root, options, callbacks)=>new Dir2Tree(root, options, callbacks);
 module.exports=dir2tree;
