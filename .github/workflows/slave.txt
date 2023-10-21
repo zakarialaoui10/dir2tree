@@ -30,3 +30,5 @@ jobs:
         uses: zakarialaoui10/dir2tree@main
         env:
           CUSTOM_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
+          OWNER : ${{github.repository_owner}}
+          NAME  : ${{github.repository_name}}
