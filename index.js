@@ -24,6 +24,5 @@ const TARGET = path.join(process.cwd(), 'generated2.json');
 const tree = dir2tree(ROOT,{fileContent:true,sortBy:"extension",skipFile:["hh.txt"]});
 tree.write("gen.json")
 consol.log("end")
-*/
 module.exports=dir2tree
-
+*/
