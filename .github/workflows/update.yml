@@ -1,0 +1,24 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18.14.0'
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Run Node.js Script
+      run: node index.js
