@@ -1,5 +1,5 @@
 {
-  "name": "api2",
+  "name": "dir2tree",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,5 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "fs": "^0.0.1-security",
-    "path": "^0.12.7"
   }
 }
