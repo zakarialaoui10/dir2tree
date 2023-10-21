@@ -10,17 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Write File
-        uses: actions/write-file@v1
-        with:
-           path: myfile.txt
-           contents: Hello, world!
-
       - name: Checkout Repository
         uses: actions/checkout@v2
-        with:
-          permissions: write
-
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
