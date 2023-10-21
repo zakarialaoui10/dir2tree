@@ -2,11 +2,12 @@ const fs = require('fs');
 const path = require('path');
 
 const filePath = path.join(__dirname, 'example.txt');
+const content = 'Hello';
 
-fs.readFile(filePath, 'utf8', (err, data) => {
+fs.writeFile(filePath, content, (err) => {
   if (err) {
-    console.error('Error reading the file:', err);
+    console.error('Error creating the file:', err);
   } else {
-    console.log('File content:', data);
+    console.log('File created with content:', content);
   }
 });
