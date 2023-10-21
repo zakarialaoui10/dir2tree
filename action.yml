@@ -2,28 +2,8 @@ name: 'Master'
 description: 'dir2tree'
 runs:
   using: 'node16'
+  - name: Install Node.js dependencies
+    run: npm install
   main: 'test.js'
 
-on:
-  push:
-    branches:
-      - main
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16' # Specify the Node.js version you need
-
-      - name: Install Node.js dependencies
-        run: npm install
-
-      - name: Run the action
-        run: node test.js
