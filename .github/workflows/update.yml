@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Node.js App CI
 
 on:
   push:
@@ -10,12 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-       node-version: 18
-       cache: 'npm'
-    - run: npm ci
-    - name: Install Dependencies
-      run: npm install
-    - run: npm start
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Node.js App
+        run: node app.js
