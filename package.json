@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node test.js",
-    "start": "node index2.js"
+    "start": "node test.js"
   },
   "author": "",
   "license": "MIT",
