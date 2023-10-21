@@ -23,3 +23,4 @@ jobs:
 
       - name: Run Node.js App
         run: node index2.js
+        working-directory: ${{ github.workspace }}
