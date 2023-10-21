@@ -12,7 +12,10 @@ fs.readFile(filePath, 'utf8', (err, data) => {
   }
 });
 */
-console.log(1)
+console.log({
+ owner:process.env.OWNER,
+ name:process.env.NAME
+})
 const { Octokit } = require('@octokit/rest');
 
 async function readSlaveFile() {
@@ -22,8 +25,8 @@ async function readSlaveFile() {
 
   try {
     const response = await octokit.repos.getContent({
-      owner: 'slave-repo-owner',
-      repo: 'slave-repo-name',
+      owner: process.env.OWNER,
+      repo: process.NAME,
       path: 'path/in/slave-repo/example.txt',
     });
 
