@@ -1,5 +1,5 @@
 name: 'Master'
 description: 'dir2tree'
 runs:
-  using: 'node18'
+  using: 'node16'
   main: 'index.js'
