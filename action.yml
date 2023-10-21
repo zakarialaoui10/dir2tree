@@ -2,8 +2,6 @@ name: 'Master'
 description: 'dir2tree'
 runs:
   using: 'node16'
-  - name: Install Node.js dependencies
-    run: npm install
   main: 'test.js'
 
 
