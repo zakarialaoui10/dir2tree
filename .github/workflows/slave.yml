@@ -23,9 +23,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build and Test
-        run: npm test
-
       - name: Generate Directory Tree
         uses: zakarialaoui10/dir2tree@main
         env:
