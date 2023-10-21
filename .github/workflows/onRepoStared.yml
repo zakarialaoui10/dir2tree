@@ -22,4 +22,4 @@ jobs:
       run: npm install
 
     - name: Run Node.js Script
-      run: node Examples/index.js
+      run: node Examples/0-Basic/index.js
