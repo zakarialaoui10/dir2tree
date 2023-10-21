@@ -141,6 +141,7 @@ class Dir2Tree {
     const jsonTree = JSON.stringify(this.tree, null, 2); // Pretty-print the JSON
     fs.writeFileSync(filename, jsonTree, 'utf8');
     console.log(`Tree written to ${filename}`);
+    console.log(__dirname)
     return this;
   }
 }
