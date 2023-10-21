@@ -16,4 +16,6 @@ jobs:
        node-version: 18
        cache: 'npm'
     - run: npm ci
+    - name: Install Dependencies
+      run: npm install
     - run: npm start
