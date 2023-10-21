@@ -17,7 +17,7 @@ const { Octokit } = require('@octokit/rest');
 
 async function readSlaveFile() {
   const octokit = new Octokit({
-    auth: env.GITHUB_TOKEN_MASTER, // Use your GitHub token secret from the master repository.
+    auth: process.env.GITHUB_TOKEN_MASTER, // Use your GitHub token secret from the master repository.
   });
 
   try {
