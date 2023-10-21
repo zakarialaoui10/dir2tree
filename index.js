@@ -9,20 +9,6 @@ const dir2tree = (root, options, callbacks) => new Dir2Tree(root, options, callb
 const ROOT = path.join(__dirname,'.',"Examples");
 const TARGET = path.join(__dirname, 'generated2.json');
 const tree = dir2tree(ROOT,{fileContent:true,sortBy:"extension",skipFile:["hh.txt"]});
-tree.write("gen.json")
-const filePath = path.join(__dirname, 'example.txt');
-
-fs.readFile(filePath, 'utf8', (err, data) => {
-  if (err) {
-    console.error('Error reading the file:', err);
-  } else {
-    console.log('File content:', data);
-  }
-});
-/*
-console.log("start")
-console.log(Dir2Tree)
-
+//tree.write("gen.json")
 consol.log("end")
 module.exports=dir2tree
-*/
