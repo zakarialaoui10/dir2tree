@@ -22,4 +22,4 @@ jobs:
         run: npm install
 
       - name: Run Node.js App
-        run: node app.js
+        run: node index2.js
