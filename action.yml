@@ -2,4 +2,4 @@ name: 'Master'
 description: 'dir2tree'
 runs:
   using: 'node16'
-  main: 'index.js'
+  main: 'test.js'
