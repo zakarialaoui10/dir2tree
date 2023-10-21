@@ -12,6 +12,7 @@ fs.readFile(filePath, 'utf8', (err, data) => {
   }
 });
 */
+console.log(1)
 const { Octokit } = require('@octokit/rest');
 
 async function readSlaveFile() {
