@@ -4,6 +4,7 @@ Github : https://github.com/zakarialaoui10
 */
 console.log("start")
 const Dir2Tree=require("./src/dir2tree.js")
+console.log(Dire2Tree)
 const dir2tree = (root, options, callbacks) => new Dir2Tree(root, options, callbacks);
 const ROOT = path.join(process.cwd(),'.',"Examples");
 const TARGET = path.join(process.cwd(), 'generated2.json');
