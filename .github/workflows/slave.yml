@@ -1,7 +1,7 @@
 name: Node.js App CI
 
 on:
-  push:
+  push: 
     branches:
       - main
 
@@ -25,7 +25,15 @@ jobs:
 
       - name: Generate Directory Tree
         uses: zakarialaoui10/dir2tree@main
+      - name: Commit & Push
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A .
+          git commit -m "generated"
+          git push
         env:
           CUSTOM_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
           OWNER : ${{github.repository_owner}}
           NAME  : ${{github.event.repository.name}}
+        
