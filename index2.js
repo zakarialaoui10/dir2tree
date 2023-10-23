@@ -1,13 +1,16 @@
 const fs = require('fs');
-const path = require('path');
+let rawdata = fs.readFileSync('user.json');
+let users = JSON.parse(rawdata);
+console.log(users)
 
-const filePath = path.join(__dirname, 'example.txt');
-const content = 'Hello';
 
-fs.writeFile(filePath, content, (err) => {
+const content = 'Hello, World!';
+
+fs.writeFile('hello.txt', content, (err) => {
   if (err) {
-    console.error('Error creating the file:', err);
+    console.error('An error occurred:', err);
   } else {
-    console.log('File created with content:', content);
+    console.log('File "hello.txt" has been created with the content: "Hello, World!"');
   }
 });
+
