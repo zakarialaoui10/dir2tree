@@ -1,9 +1,4 @@
 const fs = require('fs');
-let rawdata = fs.readFileSync('user.json');
-let users = JSON.parse(rawdata);
-console.log(users)
-
-
 const content = 'Hello, World! ' + Math.random();
 
 fs.writeFile('hello.txt', content, (err) => {
