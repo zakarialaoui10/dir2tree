@@ -17,7 +17,7 @@ import dir2tree from dir2tree
 ## Initialise
 ```js
 const MyTree=dire2tree(ROOT,OPTIONS,CALLBACKS)
-MyTree.write("generated_file.json")
+MyTree.write(Target,"generated_file.json")
 ```
 ## Arguments
 - **`ROOT`** : The path to the root directory that we want handle. it's ***`required`***
