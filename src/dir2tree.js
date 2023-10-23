@@ -8,8 +8,20 @@ function shouldSkipPath(filePath) {
     this?.options?.skipExtension?.includes(
       path.extname(normalizedPath).slice(1)
     )
-  )
+  )return true;
+  return false;
+}
+function shouldSkipFolder(filePath) {
+  if (typeof filePath !== 'string') {
+    return false;
+  }
+
+  const normalizedPath = path.normalize(filePath);
+
+  if (this?.options?.skipFolder?.includes(path.basename(normalizedPath))) {
     return true;
+  }
+
   return false;
 }
 function file_metadata(filePath) {
@@ -38,6 +50,22 @@ function sort_files(files, order = 1) {
   return files.sort((a, b) => {
     const filePathA = path.join(this.root, a);
     const filePathB = path.join(this.root, b);
+
+    // Check if either of the files is a directory and handle accordingly
+    const isDirectoryA = isDirectory(filePathA);
+    const isDirectoryB = isDirectory(filePathB);
+
+    if (isDirectoryA && !isDirectoryB) {
+      return -1; // Directories come before files
+    } else if (!isDirectoryA && isDirectoryB) {
+      return 1; // Files come after directories
+    }
+
+    if (isDirectoryA && isDirectoryB) {
+      return a.localeCompare(b); // Sort directories by name
+    }
+
+    // If both are files, perform the sorting based on your criteria
     const statsA = fs.statSync(filePathA);
     const statsB = fs.statSync(filePathB);
     const extensionA = path.extname(filePathA).slice(1);
@@ -45,7 +73,7 @@ function sort_files(files, order = 1) {
     const linesA = fs.readFileSync(filePathA, "utf8").split("\n").length;
     const linesB = fs.readFileSync(filePathB, "utf8").split("\n").length;
 
-    // Customize sorting based on sortBy option (name, size, modified, etc.)
+    // Customize sorting based on sortBy option (name, size, created, modified, extension, lines, path, etc.)
     switch (this.sortBy.toLowerCase()) {
       case "name":
         return order * a.localeCompare(b);
@@ -91,11 +119,11 @@ class Dir2Tree {
     if (!stats.isDirectory()) return null;
     const files = fs.readdirSync(this.root);
     const FILTRED_FILES = filter_files.call(this, files);
-    console.log(FILTRED_FILES)
-    //const SORTED_FILES = sort_files.call(this, FILTRED_FILES);
+    const SORTED_FILES = sort_files.call(this, FILTRED_FILES);
 
-    FILTRED_FILES.forEach((file) => {
+    SORTED_FILES.forEach((file) => {
       const filePath = path.join(this.root, file);
+      if(shouldSkipFolder.call(this,file))return;
       const fileStats = fs.statSync(filePath);
       if(fileStats.isDirectory()){
         const subDirectory = new Dir2Tree(
@@ -139,7 +167,7 @@ class Dir2Tree {
   
   write(filename) {
     const jsonTree = JSON.stringify(this.tree, null, 2); // Pretty-print the JSON
-    const filePath = path.join(__dirname, filename);
+    const filePath = path.join(__dirname, filename); // Construct the file path using __dirname
     fs.writeFileSync(filePath, jsonTree, 'utf8');
     console.log(`Tree written to ${filePath}`);
     return this;
