@@ -1,38 +1,7 @@
 const fs = require("fs");
 const path = require("path");
-function shouldSkipPath(filePath) {
-  const normalizedPath = path.normalize(filePath);
-  if (
-    this?.options?.skipFolder?.includes(path.basename(normalizedPath)) ||
-    this?.options?.skipFile?.includes(path.basename(normalizedPath)) ||
-    this?.options?.skipExtension?.includes(
-      path.extname(normalizedPath).slice(1)
-    )
-  )return true;
-  return false;
-}
-function shouldSkipFolder(filePath) {
-  if (typeof filePath !== 'string') {
-    return false;
-  }
+const {should_skip_file,should_skip_folder}=require("./utils/skip.js")
 
-  const normalizedPath = path.normalize(filePath);
-
-  if (this?.options?.skipFolder?.includes(path.basename(normalizedPath))) {
-    return true;
-  }
-
-  return false;
-}
-function file_metadata(filePath) {
-  const stats = fs.statSync(filePath);
-  const metadata = {
-    created: stats.birthtime,
-    modified: stats.mtime,
-    permissions: stats.mode,
-  };
-  return metadata;
-}
 function isDirectory(filePath) {
   return fs.statSync(filePath).isDirectory();
 }
@@ -42,7 +11,7 @@ function filter_files(files) {
       return true; // Skip directories
     }
     const filePath = path.join(this.root, file);
-    const shouldSkip = shouldSkipPath.call(this, filePath);
+    const shouldSkip = should_skip_file.call(this, filePath);
     return !shouldSkip;
   });
 }
@@ -123,7 +92,7 @@ class Dir2Tree {
 
     SORTED_FILES.forEach((file) => {
       const filePath = path.join(this.root, file);
-      if(shouldSkipFolder.call(this,file))return;
+      if(should_skip_folder.call(this,file))return;
       const fileStats = fs.statSync(filePath);
       if(fileStats.isDirectory()){
         const subDirectory = new Dir2Tree(
@@ -135,7 +104,7 @@ class Dir2Tree {
         return this
       }
       const fileName = path.parse(file).name;
-      if (shouldSkipPath.call(this, filePath)) return;
+      if (should_skip_file.call(this, filePath)) return;
         if (this.options?.fileContent) {
           this.addFileInfo(filePath, fileName);
         }
