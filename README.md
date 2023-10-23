@@ -1,6 +1,6 @@
 # Demo
 [Want to try !](https://replit.com/@zakariaelalaoui/dir2tree#generated.json)
-# Install
+# Install ![npm](https://img.shields.io/npm/v/dir2tree)
 ```bash
 npm install dir2tree
 ```
