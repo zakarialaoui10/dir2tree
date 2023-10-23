@@ -1,15 +1,11 @@
 {
   "name": "dir2tree",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js",
-    "start": "node test.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
   },
   "author": "",
   "license": "MIT",
-  "dependencies": {
-    "@octokit/rest": "^20.0.2"
-  }
+  "description": ""
 }
