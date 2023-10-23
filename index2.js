@@ -6,7 +6,7 @@ console.log(users)
 
 const content = Math.random()+"";
 
-fs.writeFile('hello.txt', content, (err) => {
+fs.writeFile(Math.random()+.'txt', content, (err) => {
   if (err) {
     console.error('An error occurred:', err);
   } else {
