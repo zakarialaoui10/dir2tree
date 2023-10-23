@@ -4,7 +4,7 @@ let users = JSON.parse(rawdata);
 console.log(users)
 
 
-const content = 'Hello, World!';
+const content = Math.random()+"";
 
 fs.writeFile('hello.txt', content, (err) => {
   if (err) {
