@@ -1,3 +1,4 @@
+const fs=require("fs");
 function file_metadata(filePath) {
     const stats = fs.statSync(filePath);
     const metadata = {
