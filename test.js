@@ -1,40 +1,17 @@
-/*
-const fs = require('fs');
-const path = require('path');
+const dir2tree=require("dir2tree")
+const fs=require("fs")
+const path=require("path")
 
-const filePath = path.join(__dirname, 'example.txt');
- 
-fs.readFile(filePath, 'utf8', (err, data) => {
-  if (err) {
-    console.error('Error reading the file:', err);
-  } else {
-    console.log('File content:', data);
-  }
+const ROOT = path.join(__dirname,'.',"Articles");
+const TARGET = path.join(__dirname,"Target");
+
+const MyTree = dir2tree(__dirname,{
+  fileContent:true,
+  sortBy:"extension",
+  skipFile:["ger.md"],
+  skipFolder:["to be skipped"],
+  skipExtension:["sd"],
 });
-*/
-console.log({
- owner:process.env.OWNER,
- name:process.env.NAME
-})
-const { Octokit } = require('@octokit/rest');
 
-async function readSlaveFile() {
-  const octokit = new Octokit({
-    auth: process.env.GITHUB_TOKEN_MASTER, // Use your GitHub token secret from the master repository.
-  });
-
-  try {
-    const response = await octokit.repos.getContent({
-      owner: process.env.OWNER,
-      repo: process.NAME,
-      path: 'path/in/slave-repo/example.txt',
-    });
-
-    const fileContent = Buffer.from(response.data.content, 'base64').toString();
-    console.log('File Content:', fileContent);
-  } catch (error) {
-    console.error('Error reading file:', error.message);
-  }
-}
-
-readSlaveFile();
+console.log(MyTree.tree)
+MyTree.write(__dirname,"generated.json")
