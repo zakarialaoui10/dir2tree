@@ -8,16 +8,22 @@ const path = require('path');
 */
 const Dir2Tree=require("./src/dir2tree.js")
 const dir2tree = (root, options, callbacks=[]) => new Dir2Tree(root, options, callbacks);
-/*
-const ROOT = path.join(__dirname,'.',"Examples");
-const TARGET = path.join(__dirname, 'generated2.json');
-console.log({ROOT,TARGET})
-const tree = dir2tree(ROOT,{fileContent:true,sortBy:"extension",skipFile:["hh.txt"]});
-console.log(process.cwd())
-console.log(__dirname)
 
-console.log(tree.tree)
-tree.write("gen.json")
-console.log("end")
-*/
+const fs=require("fs")
+const path=require("path")
+
+const ROOT = path.join(__dirname,'.',"Articles");
+const TARGET = path.join(__dirname,"Target");
+
+const MyTree = dir2tree(ROOT,{
+  fileContent:true,
+  sortBy:"extension",
+  skipFile:["ger.md"],
+  skipFolder:["to be skipped"],
+  skipExtension:["sd"],
+});
+
+console.log(MyTree.tree)
+MyTree.write(__dirname,"generated.json")
+
 module.exports=dir2tree
