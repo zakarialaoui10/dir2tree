@@ -36,7 +36,7 @@ MyTree.write("generated_file.json")
   - **`order`** : (***Number***)
 - **`CALLBACKS`** : it's ***`optional`***
 ## Methodes
-- **`.write(file_name)`**
+- **`.write(Target, filename)`**
 
 # License 
 This projet is licensed under the terms of MIT License .<br>
