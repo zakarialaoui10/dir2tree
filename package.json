@@ -1,11 +1,24 @@
 {
   "name": "dir2tree",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
-  "author": "zakaria elalaoui",
-  "license": "MIT",
-  "description": "a user-friendly Node.js tool for creating organized directory trees from a root directory. It offers customization options for tailored tree generation and content analysis"
+  "author": {
+    "name": "zakaria elalaoui",
+    "url": "https://github.com/zakarialaoui10"
+  },  
+  "description": "a user-friendly Node.js tool for creating organized directory trees from a root directory. It offers customization options for tailored tree generation and content analysis",
+  "keywords": ["directory", "tree", "structure", "filesystem", "file management", "directory tree","json"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zakarialaoui10/dir2tree.git"
+  },
+  "homepage": "https://github.com/zakarialaoui10/dir2tree",
+  "bugs": {
+    "url": "https://github.com/zakarialaoui10/mapfun/issues"
+  },
+  "license": "MIT"
 }
