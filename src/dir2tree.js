@@ -78,9 +78,9 @@ class Dir2Tree {
     add_to_tree.call(this,fileName, fileInfo);
   }
   
-  write(filename) {
+  write(Target, filename) {
     const jsonTree = JSON.stringify(this.tree, null, 2); // Pretty-print the JSON
-    const filePath = path.join(__dirname, filename); // Construct the file path using __dirname
+    const filePath = path.join(Target, filename); // Construct the file path
     fs.writeFileSync(filePath, jsonTree, 'utf8');
     console.log(`Tree written to ${filePath}`);
     return this;
