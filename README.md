@@ -1,5 +1,5 @@
 # Demo
-![Try](https://replit.com/@zakariaelalaoui/dir2tree#generated.json)
+[Want to try !](https://replit.com/@zakariaelalaoui/dir2tree#generated.json)
 # Install
 ```bash
 npm install dir2tree
