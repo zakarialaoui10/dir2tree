@@ -1,9 +1,10 @@
 const fs = require("fs");
 const path = require("path");
-const {should_skip_file,should_skip_folder}=require("./utils/skip.js")
-const {sort_files}=require("./utils/sort.js")
-const {filter_files}=require("./utils/filter.js")
+const {should_skip_file,should_skip_folder}=require("./utils/skip.js");
+const {sort_files}=require("./utils/sort.js");
+const {filter_files}=require("./utils/filter.js");
 const {isDirectory}=require("./utils/general.js");
+const {file_metadata}=require("./utils/stats.js");
 
 
 
