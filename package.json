@@ -7,5 +7,5 @@
   },
   "author": "zakaria elalaoui",
   "license": "MIT",
-  "description": ""
+  "description": "a user-friendly Node.js tool for creating organized directory trees from a root directory. It offers customization options for tailored tree generation and content analysis"
 }
