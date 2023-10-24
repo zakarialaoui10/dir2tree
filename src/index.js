@@ -64,6 +64,7 @@ class Dir2Tree {
     const length = fs.statSync(filePath).size;
     const lines = content.split("\n").length;
     const metadata = file_metadata.call(this, filePath);
+    console.log(fileName)
     if (this.options?.fileContent) Object.assign(fileInfo, { content });
     if (this.options?.fileExtension) Object.assign(fileInfo, { extension });
     if (this.options?.fileName) Object.assign(fileInfo, { name });
@@ -73,7 +74,7 @@ class Dir2Tree {
     Object.assign(fileInfo, { stats });
     Object.assign(fileInfo, { metadata });
     this?.callbacks?.map((n) => n(filePath, fileInfo));
-    add_to_tree.call(this,fileName, fileInfo);
+    add_to_tree.call(this,fileName+"_"+extension, fileInfo);
   }
   
   write(Target, filename) {
