@@ -15,3 +15,5 @@ const decrypt=()=>{}
 // Sheet.js
 const xls2json=()={}
 const json2xls=()={}
+// 
+const img2x=()=>{}
