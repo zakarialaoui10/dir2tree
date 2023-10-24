@@ -84,4 +84,5 @@ class Dir2Tree {
     return this;
   }
 }
-module.exports = Dir2Tree;
+const dir2tree = (root, options, callbacks=[]) => new Dir2Tree(root, options, callbacks);
+module.exports = dir2tree;
