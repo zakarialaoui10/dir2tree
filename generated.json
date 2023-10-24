@@ -1,0 +1,28 @@
+{
+  "j": {
+    "content": "00010101010101001010101\n",
+    "stats": {
+      "length": 24,
+      "size": 0.0234375,
+      "lines": 2
+    },
+    "metadata": {
+      "created": "2023-10-24T17:51:13.409Z",
+      "modified": "2023-10-24T17:51:13.409Z",
+      "permissions": 33188
+    }
+  },
+  "a": {
+    "content": "hello ",
+    "stats": {
+      "length": 6,
+      "size": 0.005859375,
+      "lines": 1
+    },
+    "metadata": {
+      "created": "2023-10-24T17:51:13.409Z",
+      "modified": "2023-10-24T17:51:13.409Z",
+      "permissions": 33188
+    }
+  }
+}
