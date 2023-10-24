@@ -7,7 +7,6 @@ const {filter_files}=require("./utils/filter.js");
 const {add_to_tree}=require("./utils/general.js");
 const {file_metadata}=require("./utils/stats.js");
 
-
 class Dir2Tree {
   constructor(root, options = {}, callbacks = {}) {
     this.root = root;
