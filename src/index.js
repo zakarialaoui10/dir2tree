@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const {mapfun,flat_obj}=require("mapfun")
 const {should_skip_file,should_skip_folder}=require("./utils/skip.js");
 const {sort_files}=require("./utils/sort.js");
 const {filter_files}=require("./utils/filter.js");
@@ -64,7 +65,6 @@ class Dir2Tree {
     const length = fs.statSync(filePath).size;
     const lines = content.split("\n").length;
     const metadata = file_metadata.call(this, filePath);
-    console.log(fileName)
     if (this.options?.fileContent) Object.assign(fileInfo, { content });
     if (this.options?.fileExtension) Object.assign(fileInfo, { extension });
     if (this.options?.fileName) Object.assign(fileInfo, { name });
@@ -84,20 +84,21 @@ class Dir2Tree {
     console.log(`Tree written to ${filePath}`);
     return this;
   }
-  flat(){
+  flat(depth=1,separator="_"){
+    this.tree=flat_obj(this.tree,depth,separator);
     return this;
   }
   reduce(){
-    return this;
+
   }
   sort(){
-    return this;
+    
   }
   filter(){
-    return this;
+
   }
   map(){
-    return this;
+    
   }
 }
 const dir2tree = (root, options, callbacks=[]) => new Dir2Tree(root, options, callbacks);
