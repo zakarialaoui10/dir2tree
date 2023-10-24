@@ -39,7 +39,7 @@ MyTree.write(Target,"generated_file.json")
 - **`CALLBACKS`** : it's ***`optional`***
 ### Methodes
 - **`.write(Target, filename)`**
-### Use It in you Github Repository
+### Use It in your Github Repository
 ```yml
 name: Generate Directory Tree using zakarialaoui10/dir2tree
 on:
