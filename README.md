@@ -41,33 +41,21 @@ MyTree.write(Target,"generated_file.json")
 - **`.write(Target, filename)`**
 ### Use It in you Github Repository
 ```yml
-name: Node.js App CI
-  
+name: Generate Directory Tree using zakarialaoui10/dir2tree
 on:
   push: 
     branches:
       - main
-
 jobs:
   build:
     permissions :
       contents : write
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2.1.5
-        with:
-          node-version: 14
-
-      - name: Install Dependencies
-        run: npm install
-
       - name: Generate Directory Tree
         uses: zakarialaoui10/dir2tree@main
       - name: Commit & Push
@@ -77,6 +65,10 @@ jobs:
           git add -A .
           git commit -m "generated"
           git push
+        env:
+          CUSTOM_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
+        
+
         env:
           CUSTOM_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
           OWNER : ${{github.repository_owner}}
