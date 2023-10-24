@@ -1,14 +1,14 @@
 const path=require("path");
 const fs=require("fs")
-const {isDirectory}=require("./general.js");
+const {is_directory}=require("./general.js");
 function sort_files(files, order = 1) {
     return files.sort((a, b) => {
       const filePathA = path.join(this.root, a);
       const filePathB = path.join(this.root, b);
   
       // Check if either of the files is a directory and handle accordingly
-      const isDirectoryA = isDirectory(filePathA);
-      const isDirectoryB = isDirectory(filePathB);
+      const isDirectoryA = is_directory(filePathA);
+      const isDirectoryB = is_directory(filePathB);
   
       if (isDirectoryA && !isDirectoryB) {
         return -1; // Directories come before files
