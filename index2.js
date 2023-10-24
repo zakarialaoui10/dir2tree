@@ -1,5 +1,6 @@
 const fs = require('fs');
-
+const path = require('path');
+console.log(__dirname)
 try {
   const data = fs.readFileSync('user.json', 'utf8');
 fs.writeFile('hello.txt', data, (err) => {
