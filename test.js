@@ -5,7 +5,7 @@ const dir2tree = (root, options, callbacks=[]) => new Dir2Tree(root, options, ca
 const ROOT = path.join(__dirname,'.',"Articles");
 const TARGET = path.join(__dirname,"Target");
 console.log({ROOT,TARGET})
-const MyTree = dir2tree(__dirname,{
+const MyTree = dir2tree(ROOT,{
   fileContent:true,
   sortBy:"extension",
   skipFile:["ger.md"],
@@ -14,5 +14,5 @@ const MyTree = dir2tree(__dirname,{
 });
 
 console.log(MyTree.tree)
-MyTree.write(__dirname,"generated.json")
+MyTree.write(TARGET,"generated.json")
 
