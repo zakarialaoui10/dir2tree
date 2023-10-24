@@ -1,9 +1,9 @@
 const path=require("path");
-const {isDirectory}=require("./general.js");
+const {is_directory}=require("./general.js");
 const {should_skip_file}=require("./skip.js")
 function filter_files(files) {
     return files.filter((file) => {
-      if (isDirectory(path.join(this.root, file))) {
+      if (is_directory(path.join(this.root, file))) {
         return true; // Skip directories
       }
       const filePath = path.join(this.root, file);
