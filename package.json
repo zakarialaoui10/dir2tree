@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/zakarialaoui10/dir2tree/issues"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "mapfun": "^0.9.17"
+  }
 }
