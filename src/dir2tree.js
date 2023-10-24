@@ -6,8 +6,6 @@ const {filter_files}=require("./utils/filter.js");
 const {isDirectory}=require("./utils/general.js");
 const {file_metadata}=require("./utils/stats.js");
 
-
-
 function add_to_tree(key, value) {
   const keys = key.split(path.sep);
   const lastKeyIndex = keys.length - 1;
