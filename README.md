@@ -1,25 +1,25 @@
-# Demo
+## Demo
 [Want to try !](https://replit.com/@zakariaelalaoui/dir2tree#generated.json)
-# Install ![npm](https://img.shields.io/npm/v/dir2tree)
+## Install ![npm](https://img.shields.io/npm/v/dir2tree)
 ```bash
 npm install dir2tree
 ```
-# Import
-## Common Js
+## Import
+### Common Js
 ```js
 const dir2tree=require("dir2tree")
 ```
-## Es Module
+### Es Module
 ```js
 import dir2tree from dir2tree
 ```
-# Syntaxe
-## Initialise
+## Syntaxe
+### Initialise
 ```js
 const MyTree=dire2tree(ROOT,OPTIONS,CALLBACKS)
 MyTree.write(Target,"generated_file.json")
 ```
-## Arguments
+####$ Arguments
 - **`ROOT`** : The path to the root directory that we want handle. it's ***`required`***
 - **`OPTIONS`** : An object containing various configuration options to control the behavior of the tree generation.it's ***`optional`*** , These options might include :
   - **`fileContent`** : (***Boolean***)
@@ -40,6 +40,6 @@ MyTree.write(Target,"generated_file.json")
 ## Methodes
 - **`.write(Target, filename)`**
 
-# License 
+## License 
 This projet is licensed under the terms of MIT License .<br>
 <img src="https://img.shields.io/github/license/zakarialaoui10/zikojs?color=rgb%2820%2C21%2C169%29">
