@@ -1,0 +1,22 @@
+name: dir2tree
+on :
+ push
+jobs:
+  build:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    name: generate tree
+    steps:
+      - uses: actions/checkout@v3
+      - uses: zakarialaoui10/dir2tree@main
+      - uses: actions/setup-node@v3
+      - name: Commit & Push
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A .
+          git commit -m "generated"
+          git push 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
