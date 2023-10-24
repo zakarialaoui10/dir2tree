@@ -41,6 +41,11 @@ MyTree.write(Target,"generated_file.json")
 - **`.write(Target, filename)`**
 - **`.flat(depth, separator)`**
 ### Use It in your Github Repository
+```mermaid
+sequenceDiagram
+    Your repository ->> dir2tree: ...
+    dir2tree-->>Your repository:...
+```
 ```yml
 name: Generate Directory Tree using zakarialaoui10/dir2tree
 on:
