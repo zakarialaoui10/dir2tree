@@ -4,19 +4,10 @@ const {mapfun,flat_obj}=require("mapfun")
 const {should_skip_file,should_skip_folder}=require("./utils/skip.js");
 const {sort_files}=require("./utils/sort.js");
 const {filter_files}=require("./utils/filter.js");
-const {isDirectory}=require("./utils/general.js");
+const {add_to_tree}=require("./utils/general.js");
 const {file_metadata}=require("./utils/stats.js");
 
-function add_to_tree(key, value) {
-  const keys = key.split(path.sep);
-  const lastKeyIndex = keys.length - 1;
-  keys.reduce((subtree, currentKey, index) => {
-    if (!subtree[currentKey]) {
-      subtree[currentKey] = index === lastKeyIndex ? value : {};
-    }
-    return subtree[currentKey];
-  }, this.tree);
-}
+
 class Dir2Tree {
   constructor(root, options = {}, callbacks = {}) {
     this.root = root;
@@ -89,16 +80,17 @@ class Dir2Tree {
     return this;
   }
   reduce(){
-
+    return this;
   }
   sort(){
-    
+    return this;
   }
   filter(){
-
+    return this;
   }
-  map(){
-    
+  map(callback,options={}){
+    this.tree=mapfun(callback,options,this.tree);
+    return this;
   }
 }
 const dir2tree = (root, options, callbacks=[]) => new Dir2Tree(root, options, callbacks);
