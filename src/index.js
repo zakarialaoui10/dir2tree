@@ -85,7 +85,20 @@ class Dir2Tree {
     return this;
   }
   flat(){
-}
+    return this;
+  }
+  reduce(){
+    return this;
+  }
+  sort(){
+    return this;
+  }
+  filter(){
+    return this;
+  }
+  map(){
+    return this;
+  }
 }
 const dir2tree = (root, options, callbacks=[]) => new Dir2Tree(root, options, callbacks);
 module.exports = dir2tree;
