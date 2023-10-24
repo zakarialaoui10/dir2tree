@@ -67,10 +67,6 @@ jobs:
           git push
         env:
           CUSTOM_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
-        
-
-        env:
-          CUSTOM_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
           OWNER : ${{github.repository_owner}}
           NAME  : ${{github.event.repository.name}}
 ```
