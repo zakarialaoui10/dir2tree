@@ -37,7 +37,7 @@ MyTree.write(Target,"generated_file.json")
   - **`sortBy`** : (***String***) , possible values : `"names"`,`"extension"`,`"size"`,`"lines"`,`"created"`,`"lastmodified"`,
   - **`order`** : (***Number***)
 - **`CALLBACKS`** : it's ***`optional`***
-## Methodes
+### Methodes
 - **`.write(Target, filename)`**
 
 ## License 
