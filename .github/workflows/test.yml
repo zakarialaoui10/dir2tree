@@ -6,6 +6,8 @@ on:
     branches: [ "main" ]
 jobs:
   build:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     strategy:
       matrix:
