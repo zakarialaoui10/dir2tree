@@ -1,6 +1,13 @@
 const fs = require('fs');
-const content = 'Hello, World! ' + Math.random();
 
+try {
+  const data = fs.readFileSync('user.json', 'utf8');
+  console.log(data);
+} catch (error) {
+  console.error('Error reading the file:', error);
+}
+
+const content = 'Hello, World! ' + Math.random();
 fs.writeFile('hello.txt', content, (err) => {
   if (err) {
     console.error('An error occurred:', err);
