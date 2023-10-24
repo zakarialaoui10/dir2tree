@@ -19,7 +19,7 @@ import dir2tree from dir2tree
 const MyTree=dire2tree(ROOT,OPTIONS,CALLBACKS)
 MyTree.write(Target,"generated_file.json")
 ```
-####$ Arguments
+#### Arguments
 - **`ROOT`** : The path to the root directory that we want handle. it's ***`required`***
 - **`OPTIONS`** : An object containing various configuration options to control the behavior of the tree generation.it's ***`optional`*** , These options might include :
   - **`fileContent`** : (***Boolean***)
@@ -39,6 +39,7 @@ MyTree.write(Target,"generated_file.json")
 - **`CALLBACKS`** : it's ***`optional`***
 ### Methodes
 - **`.write(Target, filename)`**
+- - **`.flat(depth, separator)`**
 ### Use It in your Github Repository
 ```yml
 name: Generate Directory Tree using zakarialaoui10/dir2tree
