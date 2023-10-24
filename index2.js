@@ -6,7 +6,7 @@ fs.writeFile('hello.txt', data, (err) => {
   if (err) {
     console.error('An error occurred:', err);
   } else {
-    console.log(`File "hello.txt" has been created with the content: ${content}`);
+    console.log(`File "hello.txt" has been created with the content: ${data}`);
   }
 });
 
