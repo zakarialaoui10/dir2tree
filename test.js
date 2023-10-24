@@ -2,8 +2,8 @@ const fs=require("fs")
 const path=require("path")
 const Dir2Tree=require("./src/dir2tree.js")
 const dir2tree = (root, options, callbacks=[]) => new Dir2Tree(root, options, callbacks);
-const ROOT = path.join(__dirname,'.',"Articles");
-const TARGET = path.join(__dirname,"Target");
+const ROOT = path.join(process.cwd(),'.',"Articles");
+const TARGET = path.join(process.cwd(),"Target");
 console.log({ROOT,TARGET})
 const MyTree = dir2tree(ROOT,{
   fileContent:true,
@@ -14,5 +14,5 @@ const MyTree = dir2tree(ROOT,{
 });
 
 console.log(MyTree.tree)
-MyTree.write(__dirname,"generated.json")
+MyTree.write(process.cwd(),"generated.json")
 
