@@ -84,6 +84,8 @@ class Dir2Tree {
     console.log(`Tree written to ${filePath}`);
     return this;
   }
+  flat(){
+}
 }
 const dir2tree = (root, options, callbacks=[]) => new Dir2Tree(root, options, callbacks);
 module.exports = dir2tree;
