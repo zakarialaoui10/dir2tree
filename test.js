@@ -14,5 +14,5 @@ const MyTree = dir2tree(ROOT,{
 });
 
 console.log(MyTree.tree)
-MyTree.write(TARGET,"generated.json")
+MyTree.write(__dirname,"generated.json")
 
