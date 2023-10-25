@@ -3,4 +3,6 @@ description: 'dir2tree'
 runs:
   using: 'node16'
   main: 'Automation/index.js'
-  
+  steps:
+    - name: Install packages
+      run : npm i
