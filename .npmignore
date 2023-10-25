@@ -1,5 +1,7 @@
 action.yml
 test.js
+.gitignore
+_test_fs.js
 Examples/
 .github/
 Automation/
