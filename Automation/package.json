@@ -10,19 +10,22 @@
       "outputFormat": "commonjs",
       "distDir": "./dist",
       "optimize": true,
-      "sourceMap": true
+      "sourceMap": false
     }
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node index.js",
     "build": "parcel build --no-cache",
     "watch": "parcel watch --no-cache"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "dir2tree": "^0.2.0",
-    "mapfun": "^0.9.17",
+    "mapfun": "^0.9.17"
+  },
+  "devDependencies": {
     "parcel": "^2.10.1"
   }
 }
