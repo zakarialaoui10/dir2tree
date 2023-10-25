@@ -577,6 +577,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"6sdqq":[function(require,module,exports) {
 var process = require("8c1f46b7ed257307");
 const path = require("d94945850d4bcb20");
+const fs = require("1b31d0902392fae0");
 const dir2tree = require("d76a9648c07fb0e2");
 const ROOT = path.join(process.cwd(), ".", "Articles");
 const TARGET = path.join(process.cwd(), "Target");
@@ -600,7 +601,7 @@ const MyTree = dir2tree(ROOT, {
 console.log(MyTree.tree);
 MyTree.write(process.cwd(), "generated.json");
 
-},{"8c1f46b7ed257307":"ZU0U8","d94945850d4bcb20":"4ceTN","d76a9648c07fb0e2":"k3xTj"}],"ZU0U8":[function(require,module,exports) {
+},{"8c1f46b7ed257307":"ZU0U8","d94945850d4bcb20":"4ceTN","d76a9648c07fb0e2":"k3xTj","1b31d0902392fae0":"fEgZY"}],"ZU0U8":[function(require,module,exports) {
 // shim for using process in browser
 var process = module.exports = {};
 // cached from whatever global is present so that test runners that stub it
