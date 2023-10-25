@@ -4,7 +4,7 @@
 104C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@parcel\fs\src133427125604407605 1
 111C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\domutils\lib\feeds.js133427125598689832 0
 128C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\chrome-trace-event\dist\trace-event.js133427125598046521 0
-94C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\package-lock.json133427128821109081 0
+94C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\package-lock.json133427130910666991 0
 119C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\json-parse-even-better-errors133427125600422769 1
 169C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@parcel\source-map\parcel_sourcemap_wasm\dist-web\parcel_sourcemap_wasm_bg.wasm133427125614259196 0
 132C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\csso\node_modules\css-tree\lib\syntax\node133427125621689430 1
@@ -16,7 +16,7 @@
 85C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\index.js133427107463027179 0
 100C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\micromatch133427125599715558 1
 128C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@swc\helpers\cjs\_set_prototype_of.cjs133427125611519230 0
-89C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules133427128820452364 1
+89C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules133427130910108265 1
 121C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\caniuse-lite\data\regions\BO.js133427125611754421 0
 115C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\semver\functions\patch.js133427125607969010 0
 128C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@parcel\core\test\EntryRequest.test.js133427125611613845 0
@@ -24,7 +24,7 @@
 132C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@parcel\core\test\fixtures\parcel\other.js133427125614302980 0
 119C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\electron-to-chromium\index.js133427125601932270 0
 118C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\source-map\lib\quick-sort.js133427125603525768 0
-108C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\.package-lock.json133427128821608137 0
+108C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\.package-lock.json133427130911015210 0
 105C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\is-glob\LICENSE133427125597782496 0
 99C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\lru-cache133427125599638277 1
 89C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\package.json133427128821269066 0
@@ -38,7 +38,7 @@
 107C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\type-fest\license133427125597760519 0
 104C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\domelementtype133427125602708264 1
 98C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\entities133427125606204807 1
-97C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@parcel133427128820452364 1
+97C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@parcel133427130910108265 1
 165C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\msgpackr-extract\node_modules\node-gyp-build-optional-packages\package.json133427125601506908 0
 141C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@swc\helpers\cjs\_class_private_field_loose_key.cjs133427125607091665 0
 117C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@parcel\events\src\index.js133427125602767450 0
@@ -78,7 +78,7 @@
 111C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\entities\lib\index.js133427125603392965 0
 131C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@parcel\utils\test\input\config\config.js133427125604339946 0
 114C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\picocolors\picocolors.js133427125599162531 0
-95C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@lmdb133427128820452364 1
+95C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@lmdb133427130910108265 1
 139C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@parcel\rust\parcel-node-bindings.darwin-x64.node133427125623785604 0
 101C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\detect-libc133427125601405131 1
 155C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@parcel\optimizer-svgo\node_modules\svgo\plugins\removeDoctype.js133427125609451350 0
@@ -95,13 +95,13 @@
 112C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\to-regex-range\LICENSE133427125599193108 0
 136C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\caniuse-lite\data\features\webkit-user-drag.js133427125631176916 0
 134C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\css-select\lib\esm\pseudo-selectors\index.js133427125605023076 0
-107C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@msgpackr-extract133427128820452364 1
+107C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@msgpackr-extract133427130910108265 1
 157C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\css-select\node_modules\entities\lib\generated\encode-html.d.ts.map133427125608641308 0
 97C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\js-yaml133427125608242870 1
 138C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@swc\helpers\cjs\_apply_decorated_descriptor.cjs133427125598717593 0
 145C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\css-select\node_modules\domutils\lib\esm\stringify.d.ts133427125610781241 0
 120C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\css-select\lib\esm\sort.js.map133427125610524581 0
-94C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@swc133427128820452364 1
+94C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\@swc133427130910108265 1
 139C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\mtest3.c133427125611739113 0
 111C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\posthtml\lib\index.js133427125599373470 0
 111C:\Users\zakar\OneDrive\Bureau\LijatBismilah-main\github\dir2tree\automation\node_modules\escalade\package.json133427125600228031 0
