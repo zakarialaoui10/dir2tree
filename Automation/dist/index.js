@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"jjtuG":[function(require,module,exports) {
+})({"3iPvV":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = 1234;
 var HMR_SECURE = false;
-var HMR_ENV_HASH = "a25e589c66234a52";
-module.bundle.HMR_BUNDLE_ID = "115c832116754e72";
+var HMR_ENV_HASH = "7501e16170ccf237";
+module.bundle.HMR_BUNDLE_ID = "8500f5cd83d355e3";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -574,7 +574,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     });
 }
 
-},{}],"6sdqq":[function(require,module,exports) {
+},{}],"daTSg":[function(require,module,exports) {
 var process = require("8c1f46b7ed257307");
 const path = require("d94945850d4bcb20");
 const fs = require("1b31d0902392fae0");
@@ -601,7 +601,7 @@ const MyTree = dir2tree(ROOT, {
 console.log(MyTree.tree);
 MyTree.write(process.cwd(), "generated.json");
 
-},{"8c1f46b7ed257307":"ZU0U8","d94945850d4bcb20":"4ceTN","d76a9648c07fb0e2":"k3xTj","1b31d0902392fae0":"fEgZY"}],"ZU0U8":[function(require,module,exports) {
+},{"8c1f46b7ed257307":"kgjIJ","d94945850d4bcb20":"7YRFD","1b31d0902392fae0":"bSAxh","d76a9648c07fb0e2":"1A7uz"}],"kgjIJ":[function(require,module,exports) {
 // shim for using process in browser
 var process = module.exports = {};
 // cached from whatever global is present so that test runners that stub it
@@ -746,7 +746,7 @@ process.umask = function() {
     return 0;
 };
 
-},{}],"4ceTN":[function(require,module,exports) {
+},{}],"7YRFD":[function(require,module,exports) {
 // 'path' module extracted from Node.js v8.11.1 (only the posix part)
 // transplited with Babel
 // Copyright Joyent, Inc. and other Node contributors.
@@ -1171,7 +1171,10 @@ var posix = {
 posix.posix = posix;
 module.exports = posix;
 
-},{"e59eef0cf077cf10":"ZU0U8"}],"k3xTj":[function(require,module,exports) {
+},{"e59eef0cf077cf10":"kgjIJ"}],"bSAxh":[function(require,module,exports) {
+"use strict";
+
+},{}],"1A7uz":[function(require,module,exports) {
 const fs = require("b57040345a9caa60");
 const path = require("1dab1a8f247e5d4f");
 const { mapfun, flat_obj } = require("5201cc24a8cd1856");
@@ -1277,10 +1280,7 @@ class Dir2Tree {
 const dir2tree = (root, options, callbacks = [])=>new Dir2Tree(root, options, callbacks);
 module.exports = dir2tree;
 
-},{"b57040345a9caa60":"fEgZY","1dab1a8f247e5d4f":"4ceTN","5201cc24a8cd1856":"f45xv","888620d33c259dc2":"kSd5I","f4f9a33b3cbff45b":"fg2Vp","768f930eaa97e1f3":"bDMzs","f964ced1419df251":"FsFHk","1c2ae6e941f5277e":"jtQ5P"}],"fEgZY":[function(require,module,exports) {
-"use strict";
-
-},{}],"f45xv":[function(require,module,exports) {
+},{"b57040345a9caa60":"bSAxh","1dab1a8f247e5d4f":"7YRFD","5201cc24a8cd1856":"649KG","888620d33c259dc2":"49Xz1","f4f9a33b3cbff45b":"8xthk","768f930eaa97e1f3":"42BK3","f964ced1419df251":"1VvLN","1c2ae6e941f5277e":"c8X3U"}],"649KG":[function(require,module,exports) {
 /*
 Developped by zakaria elaloui
 Github : https://github.com/zakarialaoui10
@@ -1359,7 +1359,7 @@ module.exports = {
     flat_obj
 };
 
-},{}],"kSd5I":[function(require,module,exports) {
+},{}],"49Xz1":[function(require,module,exports) {
 const path = require("16cc78e167a05469");
 function should_skip_file(filePath) {
     const normalizedPath = path.normalize(filePath);
@@ -1377,7 +1377,7 @@ module.exports = {
     should_skip_folder
 };
 
-},{"16cc78e167a05469":"4ceTN"}],"fg2Vp":[function(require,module,exports) {
+},{"16cc78e167a05469":"7YRFD"}],"8xthk":[function(require,module,exports) {
 const path = require("72bf7076b2403a73");
 const fs = require("21c71323e593b8a");
 const { is_directory } = require("21bd0e47fc9bbfe6");
@@ -1423,7 +1423,7 @@ module.exports = {
     sort_files
 };
 
-},{"72bf7076b2403a73":"4ceTN","21c71323e593b8a":"fEgZY","21bd0e47fc9bbfe6":"FsFHk"}],"FsFHk":[function(require,module,exports) {
+},{"72bf7076b2403a73":"7YRFD","21c71323e593b8a":"bSAxh","21bd0e47fc9bbfe6":"1VvLN"}],"1VvLN":[function(require,module,exports) {
 const fs = require("c8f4ee079413022b");
 const path = require("33ab3779e825b7fd");
 function is_directory(filePath) {
@@ -1442,7 +1442,7 @@ module.exports = {
     add_to_tree
 };
 
-},{"c8f4ee079413022b":"fEgZY","33ab3779e825b7fd":"4ceTN"}],"bDMzs":[function(require,module,exports) {
+},{"c8f4ee079413022b":"bSAxh","33ab3779e825b7fd":"7YRFD"}],"42BK3":[function(require,module,exports) {
 const path = require("156712b39f1c5c9d");
 const { is_directory } = require("fb227d54d7e360a7");
 const { should_skip_file } = require("4409abead5212cbe");
@@ -1458,7 +1458,7 @@ module.exports = {
     filter_files
 };
 
-},{"156712b39f1c5c9d":"4ceTN","fb227d54d7e360a7":"FsFHk","4409abead5212cbe":"kSd5I"}],"jtQ5P":[function(require,module,exports) {
+},{"156712b39f1c5c9d":"7YRFD","fb227d54d7e360a7":"1VvLN","4409abead5212cbe":"49Xz1"}],"c8X3U":[function(require,module,exports) {
 const fs = require("4f795265bc9e6456");
 function file_metadata(filePath) {
     const stats = fs.statSync(filePath);
@@ -1473,5 +1473,6 @@ module.exports = {
     file_metadata
 };
 
-},{"4f795265bc9e6456":"fEgZY"}]},["jjtuG","6sdqq"], "6sdqq", "parcelRequireadf3")
+},{"4f795265bc9e6456":"bSAxh"}]},["3iPvV","daTSg"], "daTSg", "parcelRequireadf3")
 
+//# sourceMappingURL=index.js.map
