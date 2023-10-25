@@ -1,74 +1,152 @@
-var $gXNCa$fs = require("fs");
-var $gXNCa$path = require("path");
-var $gXNCa$mapfun = require("mapfun");
+var $cFoub$fs = require("fs");
+var $cFoub$path = require("path");
 
 
 
-
-var $4fa36e821943b400$require$mapfun = $gXNCa$mapfun.mapfun;
-var $4fa36e821943b400$require$flat_obj = $gXNCa$mapfun.flat_obj;
-var $083da0a6cb76564f$exports = {};
-
-function $083da0a6cb76564f$var$should_skip_file(filePath) {
-    const normalizedPath = $gXNCa$path.normalize(filePath);
-    if (this?.options?.skip?.folder?.includes($gXNCa$path.basename(normalizedPath)) || this?.options?.skip?.file?.includes($gXNCa$path.basename(normalizedPath)) || this?.options?.skip?.extension?.includes($gXNCa$path.extname(normalizedPath).slice(1))) return true;
-    return false;
+var $697a68694f2aacad$exports = {};
+/*
+Developped by zakaria elaloui
+Github : https://github.com/zakarialaoui10
+*/ function $697a68694f2aacad$var$flat_obj(obj, depth = Infinity, separator = ".", replacement = "_") {
+    const result = {};
+    let i = 0;
+    function recurse(current, path = []) {
+        if (i === depth) {
+            Object.assign(result, current);
+            return;
+        }
+        for(const key in current){
+            const value = current[key];
+            const newPath = [
+                ...path,
+                key
+            ];
+            if (typeof value === "object" && !Array.isArray(value)) recurse(value, newPath);
+            else {
+                const flatKey = newPath.join(separator).replace(new RegExp(`\\${separator}`, "g"), replacement);
+                result[flatKey] = value;
+            }
+            i++;
+        }
+    }
+    recurse(obj);
+    return result;
 }
-function $083da0a6cb76564f$var$should_skip_folder(filePath) {
-    if (typeof filePath !== "string") return false;
-    const normalizedPath = $gXNCa$path.normalize(filePath);
-    if (this?.options?.skipFolder?.includes($gXNCa$path.basename(normalizedPath))) return true;
-    return false;
-}
-$083da0a6cb76564f$exports = {
-    should_skip_file: $083da0a6cb76564f$var$should_skip_file,
-    should_skip_folder: $083da0a6cb76564f$var$should_skip_folder
+const $697a68694f2aacad$var$mapfun = (fun, { skip: skip = [], key: key = false, value: value = true } = {}, ...X)=>{
+    const Y = X.map((x)=>{
+        if (typeof skip === "string" || [
+            null,
+            undefined
+        ].includes(skip)) skip = [
+            skip
+        ];
+        const skipPrimitives = [];
+        const skipObjects = [];
+        skip.forEach((element)=>typeof element === "object" && element !== null ? skipObjects.push(element) : skipPrimitives.push(element));
+        if (skipPrimitives.includes(typeof x) || skipPrimitives.includes(x)) return x;
+        if (skipObjects.some((n)=>x instanceof n)) return x;
+        if (x === null) return fun(null);
+        if ([
+            "number",
+            "string",
+            "boolean",
+            "bigint",
+            "undefined"
+        ].includes(typeof x)) return fun(x);
+        if (typeof x === "symbol") throw new Error("symbols are not supported yet !");
+        if (x instanceof Array) return x.map((n)=>$697a68694f2aacad$var$mapfun(fun, {}, n));
+        if (ArrayBuffer.isView(x)) return Array.from(x).map((n)=>fun(n));
+        if (x instanceof Set) return new Set($697a68694f2aacad$var$mapfun(fun, {}, ...[
+            ...x
+        ]));
+        if (x instanceof WeakSet) throw new Error("WeakSets not supported yet !");
+        if (x instanceof WeakMap) throw new Error("WeakMaps not supported yet !");
+        if (x instanceof Map) return new Map([
+            ...x
+        ].map((n)=>{
+            return [
+                key ? $697a68694f2aacad$var$mapfun(fun, {}, n[0]) : n[0],
+                value ? $697a68694f2aacad$var$mapfun(fun, {}, n[1]) : n[1]
+            ];
+        }));
+        if (x instanceof Object) return Object.fromEntries(Object.entries(x).map(([KEY, VALUE])=>[
+                key ? $697a68694f2aacad$var$mapfun(fun, {}, KEY) : KEY,
+                value ? $697a68694f2aacad$var$mapfun(fun, {}, VALUE) : VALUE
+            ]));
+        else throw new Error("Uncategorised data");
+    });
+    return Y.length === 1 ? Y[0] : Y;
+};
+$697a68694f2aacad$exports = {
+    mapfun: $697a68694f2aacad$var$mapfun,
+    flat_obj: $697a68694f2aacad$var$flat_obj
 };
 
 
-var $4fa36e821943b400$require$should_skip_file = $083da0a6cb76564f$exports.should_skip_file;
-var $4fa36e821943b400$require$should_skip_folder = $083da0a6cb76564f$exports.should_skip_folder;
-var $368f798d88c5e03a$exports = {};
+var $2776a60caf88deef$require$mapfun = $697a68694f2aacad$exports.mapfun;
+var $2776a60caf88deef$require$flat_obj = $697a68694f2aacad$exports.flat_obj;
+var $3d93cec531ae9d4c$exports = {};
 
-
-var $7d0016d2d3b14ec6$exports = {};
-
-
-function $7d0016d2d3b14ec6$var$is_directory(filePath) {
-    return $gXNCa$fs.statSync(filePath).isDirectory();
+function $3d93cec531ae9d4c$var$should_skip_file(filePath) {
+    const normalizedPath = $cFoub$path.normalize(filePath);
+    if (this?.options?.skip?.folder?.includes($cFoub$path.basename(normalizedPath)) || this?.options?.skip?.file?.includes($cFoub$path.basename(normalizedPath)) || this?.options?.skip?.extension?.includes($cFoub$path.extname(normalizedPath).slice(1))) return true;
+    return false;
 }
-function $7d0016d2d3b14ec6$var$add_to_tree(key, value) {
-    const keys = key.split($gXNCa$path.sep);
+function $3d93cec531ae9d4c$var$should_skip_folder(filePath) {
+    if (typeof filePath !== "string") return false;
+    const normalizedPath = $cFoub$path.normalize(filePath);
+    if (this?.options?.skipFolder?.includes($cFoub$path.basename(normalizedPath))) return true;
+    return false;
+}
+$3d93cec531ae9d4c$exports = {
+    should_skip_file: $3d93cec531ae9d4c$var$should_skip_file,
+    should_skip_folder: $3d93cec531ae9d4c$var$should_skip_folder
+};
+
+
+var $2776a60caf88deef$require$should_skip_file = $3d93cec531ae9d4c$exports.should_skip_file;
+var $2776a60caf88deef$require$should_skip_folder = $3d93cec531ae9d4c$exports.should_skip_folder;
+var $82c6becc65ef4e6c$exports = {};
+
+
+var $29ba264081b04b00$exports = {};
+
+
+function $29ba264081b04b00$var$is_directory(filePath) {
+    return $cFoub$fs.statSync(filePath).isDirectory();
+}
+function $29ba264081b04b00$var$add_to_tree(key, value) {
+    const keys = key.split($cFoub$path.sep);
     const lastKeyIndex = keys.length - 1;
     keys.reduce((subtree, currentKey, index)=>{
         if (!subtree[currentKey]) subtree[currentKey] = index === lastKeyIndex ? value : {};
         return subtree[currentKey];
     }, this.tree);
 }
-$7d0016d2d3b14ec6$exports = {
-    is_directory: $7d0016d2d3b14ec6$var$is_directory,
-    add_to_tree: $7d0016d2d3b14ec6$var$add_to_tree
+$29ba264081b04b00$exports = {
+    is_directory: $29ba264081b04b00$var$is_directory,
+    add_to_tree: $29ba264081b04b00$var$add_to_tree
 };
 
 
-var $368f798d88c5e03a$require$is_directory = $7d0016d2d3b14ec6$exports.is_directory;
-function $368f798d88c5e03a$var$sort_files(files, order = 1) {
+var $82c6becc65ef4e6c$require$is_directory = $29ba264081b04b00$exports.is_directory;
+function $82c6becc65ef4e6c$var$sort_files(files, order = 1) {
     return files.sort((a, b)=>{
-        const filePathA = $gXNCa$path.join(this.root, a);
-        const filePathB = $gXNCa$path.join(this.root, b);
+        const filePathA = $cFoub$path.join(this.root, a);
+        const filePathB = $cFoub$path.join(this.root, b);
         // Check if either of the files is a directory and handle accordingly
-        const isDirectoryA = $368f798d88c5e03a$require$is_directory(filePathA);
-        const isDirectoryB = $368f798d88c5e03a$require$is_directory(filePathB);
+        const isDirectoryA = $82c6becc65ef4e6c$require$is_directory(filePathA);
+        const isDirectoryB = $82c6becc65ef4e6c$require$is_directory(filePathB);
         if (isDirectoryA && !isDirectoryB) return -1; // Directories come before files
         else if (!isDirectoryA && isDirectoryB) return 1; // Files come after directories
         if (isDirectoryA && isDirectoryB) return a.localeCompare(b); // Sort directories by name
         // If both are files, perform the sorting based on your criteria
-        const statsA = $gXNCa$fs.statSync(filePathA);
-        const statsB = $gXNCa$fs.statSync(filePathB);
-        const extensionA = $gXNCa$path.extname(filePathA).slice(1);
-        const extensionB = $gXNCa$path.extname(filePathB).slice(1);
-        const linesA = $gXNCa$fs.readFileSync(filePathA, "utf8").split("\n").length;
-        const linesB = $gXNCa$fs.readFileSync(filePathB, "utf8").split("\n").length;
+        const statsA = $cFoub$fs.statSync(filePathA);
+        const statsB = $cFoub$fs.statSync(filePathB);
+        const extensionA = $cFoub$path.extname(filePathA).slice(1);
+        const extensionB = $cFoub$path.extname(filePathB).slice(1);
+        const linesA = $cFoub$fs.readFileSync(filePathA, "utf8").split("\n").length;
+        const linesB = $cFoub$fs.readFileSync(filePathB, "utf8").split("\n").length;
         // Customize sorting based on sortBy option (name, size, created, modified, extension, lines, path, etc.)
         switch(this.sortBy.toLowerCase()){
             case "name":
@@ -90,38 +168,38 @@ function $368f798d88c5e03a$var$sort_files(files, order = 1) {
         }
     });
 }
-$368f798d88c5e03a$exports = {
-    sort_files: $368f798d88c5e03a$var$sort_files
+$82c6becc65ef4e6c$exports = {
+    sort_files: $82c6becc65ef4e6c$var$sort_files
 };
 
 
-var $4fa36e821943b400$require$sort_files = $368f798d88c5e03a$exports.sort_files;
-var $8634600a4677fd2c$exports = {};
+var $2776a60caf88deef$require$sort_files = $82c6becc65ef4e6c$exports.sort_files;
+var $0b90f1fd7064b3da$exports = {};
 
 
-var $8634600a4677fd2c$require$is_directory = $7d0016d2d3b14ec6$exports.is_directory;
+var $0b90f1fd7064b3da$require$is_directory = $29ba264081b04b00$exports.is_directory;
 
-var $8634600a4677fd2c$require$should_skip_file = $083da0a6cb76564f$exports.should_skip_file;
-function $8634600a4677fd2c$var$filter_files(files) {
+var $0b90f1fd7064b3da$require$should_skip_file = $3d93cec531ae9d4c$exports.should_skip_file;
+function $0b90f1fd7064b3da$var$filter_files(files) {
     return files.filter((file)=>{
-        if ($8634600a4677fd2c$require$is_directory($gXNCa$path.join(this.root, file))) return true; // Skip directories
-        const filePath = $gXNCa$path.join(this.root, file);
-        const shouldSkip = $8634600a4677fd2c$require$should_skip_file.call(this, filePath);
+        if ($0b90f1fd7064b3da$require$is_directory($cFoub$path.join(this.root, file))) return true; // Skip directories
+        const filePath = $cFoub$path.join(this.root, file);
+        const shouldSkip = $0b90f1fd7064b3da$require$should_skip_file.call(this, filePath);
         return !shouldSkip;
     });
 }
-$8634600a4677fd2c$exports = {
-    filter_files: $8634600a4677fd2c$var$filter_files
+$0b90f1fd7064b3da$exports = {
+    filter_files: $0b90f1fd7064b3da$var$filter_files
 };
 
 
-var $4fa36e821943b400$require$filter_files = $8634600a4677fd2c$exports.filter_files;
+var $2776a60caf88deef$require$filter_files = $0b90f1fd7064b3da$exports.filter_files;
 
-var $4fa36e821943b400$require$add_to_tree = $7d0016d2d3b14ec6$exports.add_to_tree;
-var $977d2a143a124b57$exports = {};
+var $2776a60caf88deef$require$add_to_tree = $29ba264081b04b00$exports.add_to_tree;
+var $30fb452386496690$exports = {};
 
-function $977d2a143a124b57$var$file_metadata(filePath) {
-    const stats = $gXNCa$fs.statSync(filePath);
+function $30fb452386496690$var$file_metadata(filePath) {
+    const stats = $cFoub$fs.statSync(filePath);
     const metadata = {
         created: stats.birthtime,
         modified: stats.mtime,
@@ -129,13 +207,13 @@ function $977d2a143a124b57$var$file_metadata(filePath) {
     };
     return metadata;
 }
-$977d2a143a124b57$exports = {
-    file_metadata: $977d2a143a124b57$var$file_metadata
+$30fb452386496690$exports = {
+    file_metadata: $30fb452386496690$var$file_metadata
 };
 
 
-var $4fa36e821943b400$require$file_metadata = $977d2a143a124b57$exports.file_metadata;
-class $4fa36e821943b400$var$Dir2Tree {
+var $2776a60caf88deef$require$file_metadata = $30fb452386496690$exports.file_metadata;
+class $2776a60caf88deef$var$Dir2Tree {
     constructor(root, options = {}, callbacks = {}){
         this.root = root;
         this.options = options;
@@ -145,38 +223,38 @@ class $4fa36e821943b400$var$Dir2Tree {
         this.generate();
     }
     generate() {
-        const stats = $gXNCa$fs.statSync(this.root);
+        const stats = $cFoub$fs.statSync(this.root);
         if (!stats.isDirectory()) return null;
-        const files = $gXNCa$fs.readdirSync(this.root);
-        const FILTRED_FILES = $4fa36e821943b400$require$filter_files.call(this, files);
-        const SORTED_FILES = $4fa36e821943b400$require$sort_files.call(this, FILTRED_FILES);
+        const files = $cFoub$fs.readdirSync(this.root);
+        const FILTRED_FILES = $2776a60caf88deef$require$filter_files.call(this, files);
+        const SORTED_FILES = $2776a60caf88deef$require$sort_files.call(this, FILTRED_FILES);
         SORTED_FILES.forEach((file)=>{
-            const filePath = $gXNCa$path.join(this.root, file);
-            if ($4fa36e821943b400$require$should_skip_folder.call(this, file)) return;
-            const fileStats = $gXNCa$fs.statSync(filePath);
+            const filePath = $cFoub$path.join(this.root, file);
+            if ($2776a60caf88deef$require$should_skip_folder.call(this, file)) return;
+            const fileStats = $cFoub$fs.statSync(filePath);
             if (fileStats.isDirectory()) {
-                const subDirectory = new $4fa36e821943b400$var$Dir2Tree(filePath, this.options, this.callbacks);
+                const subDirectory = new $2776a60caf88deef$var$Dir2Tree(filePath, this.options, this.callbacks);
                 Object.assign(this.tree, {
-                    [$gXNCa$path.basename(filePath)]: subDirectory.tree
+                    [$cFoub$path.basename(filePath)]: subDirectory.tree
                 });
                 return this;
             }
-            const fileName = $gXNCa$path.parse(file).name;
-            if ($4fa36e821943b400$require$should_skip_file.call(this, filePath)) return;
+            const fileName = $cFoub$path.parse(file).name;
+            if ($2776a60caf88deef$require$should_skip_file.call(this, filePath)) return;
             if (this.options?.fileContent) this.addFileInfo(filePath, fileName);
         });
         //this.tree=tree;
         return this.tree;
     }
     addFileInfo(filePath, fileName) {
-        const content = $gXNCa$fs.readFileSync(filePath, "utf8");
+        const content = $cFoub$fs.readFileSync(filePath, "utf8");
         const fileInfo = {};
         const stats = {};
-        const fullName = $gXNCa$path.basename(filePath);
+        const fullName = $cFoub$path.basename(filePath);
         const [name, extension] = fullName.split(".");
-        const length = $gXNCa$fs.statSync(filePath).size;
+        const length = $cFoub$fs.statSync(filePath).size;
         const lines = content.split("\n").length;
-        const metadata = $4fa36e821943b400$require$file_metadata.call(this, filePath);
+        const metadata = $2776a60caf88deef$require$file_metadata.call(this, filePath);
         if (this.options?.fileContent) Object.assign(fileInfo, {
             content: content
         });
@@ -202,17 +280,17 @@ class $4fa36e821943b400$var$Dir2Tree {
             metadata: metadata
         });
         this?.callbacks?.map((n)=>n(filePath, fileInfo));
-        $4fa36e821943b400$require$add_to_tree.call(this, fileName + "_" + extension, fileInfo);
+        $2776a60caf88deef$require$add_to_tree.call(this, fileName + "_" + extension, fileInfo);
     }
     write(Target, filename) {
         const jsonTree = JSON.stringify(this.tree, null, 2); // Pretty-print the JSON
-        const filePath = $gXNCa$path.join(Target, filename); // Construct the file path
-        $gXNCa$fs.writeFileSync(filePath, jsonTree, "utf8");
+        const filePath = $cFoub$path.join(Target, filename); // Construct the file path
+        $cFoub$fs.writeFileSync(filePath, jsonTree, "utf8");
         console.log(`Tree written to ${filePath}`);
         return this;
     }
     flat(depth = 1, separator = "_") {
-        this.tree = $4fa36e821943b400$require$flat_obj(this.tree, depth, separator);
+        this.tree = $2776a60caf88deef$require$flat_obj(this.tree, depth, separator);
         return this;
     }
     reduce() {
@@ -225,12 +303,12 @@ class $4fa36e821943b400$var$Dir2Tree {
         return this;
     }
     map(callback, options = {}) {
-        this.tree = $4fa36e821943b400$require$mapfun(callback, options, this.tree);
+        this.tree = $2776a60caf88deef$require$mapfun(callback, options, this.tree);
         return this;
     }
 }
-const $4fa36e821943b400$var$dir2tree = (root, options, callbacks = [])=>new $4fa36e821943b400$var$Dir2Tree(root, options, callbacks);
-module.exports = $4fa36e821943b400$var$dir2tree;
+const $2776a60caf88deef$var$dir2tree = (root, options, callbacks = [])=>new $2776a60caf88deef$var$Dir2Tree(root, options, callbacks);
+module.exports = $2776a60caf88deef$var$dir2tree;
 
 
 //# sourceMappingURL=index_bundle.js.map
