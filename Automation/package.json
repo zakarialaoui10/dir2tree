@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dir2tree": "^0.2.0",
     "mapfun": "^0.9.17",
     "parcel": "^2.10.1"
   }
