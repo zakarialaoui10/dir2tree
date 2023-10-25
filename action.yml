@@ -1,6 +1,7 @@
 name: 'Master'
 description: 'dir2tree'
+working-directory: 'Automation' 
 runs:
   using: 'node16'
   main: 'Automation/index.js'
-  working-directory: 'Automation' 
+  
