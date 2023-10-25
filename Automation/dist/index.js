@@ -1,33 +1,59 @@
-var $c5L0i$process = require("process");
-require("fs");
-var $c5L0i$path = require("path");
-var $c5L0i$dir2tree = require("dir2tree");
-
-
-
-
-
-const $43d7963e56408b24$var$ROOT = $c5L0i$path.join($c5L0i$process.cwd(), ".", "Articles");
-const $43d7963e56408b24$var$TARGET = $c5L0i$path.join($c5L0i$process.cwd(), "Target");
-console.log({
-    ROOT: $43d7963e56408b24$var$ROOT,
-    TARGET: $43d7963e56408b24$var$TARGET
-});
-const $43d7963e56408b24$var$MyTree = $c5L0i$dir2tree($43d7963e56408b24$var$ROOT, {
-    fileContent: true,
-    sortBy: "extension",
-    skipFile: [
-        "ger.md"
-    ],
-    skipFolder: [
-        "to be skipped"
-    ],
-    skipExtension: [
-        "sd"
-    ]
-});
-console.log($43d7963e56408b24$var$MyTree.tree);
-$43d7963e56408b24$var$MyTree.write($c5L0i$process.cwd(), "generated.json");
-
-
-//# sourceMappingURL=index.js.map
+var e,t,r,n={},i=n={};function o(){throw Error("setTimeout has not been defined")}function s(){throw Error("clearTimeout has not been defined")}function l(t){if(e===setTimeout)return setTimeout(t,0);// if setTimeout wasn't available but was latter defined
+if((e===o||!e)&&setTimeout)return e=setTimeout,setTimeout(t,0);try{// when when somebody has screwed with setTimeout but no I.E. maddness
+return e(t,0)}catch(r){try{// When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+return e.call(null,t,0)}catch(r){// same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+return e.call(this,t,0)}}}!function(){try{e="function"==typeof setTimeout?setTimeout:o}catch(t){e=o}try{t="function"==typeof clearTimeout?clearTimeout:s}catch(e){t=s}}();var a=[],c=!1,u=-1;function f(){c&&r&&(c=!1,r.length?a=r.concat(a):u=-1,a.length&&h())}function h(){if(!c){var e=l(f);c=!0;for(var n=a.length;n;){for(r=a,a=[];++u<n;)r&&r[u].run();u=-1,n=a.length}r=null,c=!1,function(e){if(t===clearTimeout)return clearTimeout(e);// if clearTimeout wasn't available but was latter defined
+if((t===s||!t)&&clearTimeout)return t=clearTimeout,clearTimeout(e);try{// when when somebody has screwed with setTimeout but no I.E. maddness
+t(e)}catch(r){try{// When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+return t.call(null,e)}catch(r){// same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+// Some versions of I.E. have different rules for clearTimeout vs setTimeout
+return t.call(this,e)}}}(e)}}// v8 likes predictible objects
+function d(e,t){this.fun=e,this.array=t}function p(){}i.nextTick=function(e){var t=Array(arguments.length-1);if(arguments.length>1)for(var r=1;r<arguments.length;r++)t[r-1]=arguments[r];a.push(new d(e,t)),1!==a.length||c||l(h)},d.prototype.run=function(){this.fun.apply(null,this.array)},i.title="browser",i.browser=!0,i.env={},i.argv=[],i.version="",i.versions={},i.on=p,i.addListener=p,i.once=p,i.off=p,i.removeListener=p,i.removeAllListeners=p,i.emit=p,i.prependListener=p,i.prependOnceListener=p,i.listeners=function(e){return[]},i.binding=function(e){throw Error("process.binding is not supported")},i.cwd=function(){return"/"},i.chdir=function(e){throw Error("process.chdir is not supported")},i.umask=function(){return 0};var g={},m={};function y(e){if("string"!=typeof e)throw TypeError("Path must be a string. Received "+JSON.stringify(e))}// Resolves . and .. elements in a path with directory names
+function b(e,t){for(var r,n="",i=0,o=-1,s=0,l=0;l<=e.length;++l){if(l<e.length)r=e.charCodeAt(l);else if(47/*/*/===r)break;else r=47/*/*/;if(47/*/*/===r){if(o===l-1||1===s);else if(o!==l-1&&2===s){if(n.length<2||2!==i||46/*.*/!==n.charCodeAt(n.length-1)||46/*.*/!==n.charCodeAt(n.length-2)){if(n.length>2){var a=n.lastIndexOf("/");if(a!==n.length-1){-1===a?(n="",i=0):i=(n=n.slice(0,a)).length-1-n.lastIndexOf("/"),o=l,s=0;continue}}else if(2===n.length||1===n.length){n="",i=0,o=l,s=0;continue}}t&&(n.length>0?n+="/..":n="..",i=2)}else n.length>0?n+="/"+e.slice(o+1,l):n=e.slice(o+1,l),i=l-o-1;o=l,s=0}else 46/*.*/===r&&-1!==s?++s:s=-1}return n}var v={// path.resolve([from ...], to)
+resolve:function(){for(var e,t,r="",i=!1,o=arguments.length-1;o>=-1&&!i;o--)o>=0?t=arguments[o]:(void 0===e&&(e=n.cwd()),t=e),y(t),0!==t.length&&(r=t+"/"+r,i=47/*/*/===t.charCodeAt(0));return(// At this point the path should be resolved to a full absolute path, but
+// handle relative paths to be safe (might happen when process.cwd() fails)
+// Normalize the path
+r=b(r,!i),i)?r.length>0?"/"+r:"/":r.length>0?r:"."},normalize:function(e){if(y(e),0===e.length)return".";var t=47/*/*/===e.charCodeAt(0),r=47/*/*/===e.charCodeAt(e.length-1);return(0!==// Normalize the path
+(e=b(e,!t)).length||t||(e="."),e.length>0&&r&&(e+="/"),t)?"/"+e:e},isAbsolute:function(e){return y(e),e.length>0&&47/*/*/===e.charCodeAt(0)},join:function(){if(0==arguments.length)return".";for(var e,t=0;t<arguments.length;++t){var r=arguments[t];y(r),r.length>0&&(void 0===e?e=r:e+="/"+r)}return void 0===e?".":v.normalize(e)},relative:function(e,t){if(y(e),y(t),e===t||(e=v.resolve(e))===(t=v.resolve(t)))return"";for(// Trim any leading backslashes
+var r=1;r<e.length&&47/*/*/===e.charCodeAt(r);++r);for(var n=e.length,i=n-r,o=1;o<t.length&&47/*/*/===t.charCodeAt(o);++o);for(var s=t.length-o,l=i<s?i:s,a=-1,c=0;c<=l;++c){if(c===l){if(s>l){if(47/*/*/===t.charCodeAt(o+c))// For example: from='/foo/bar'; to='/foo/bar/baz'
+return t.slice(o+c+1);if(0===c)// For example: from='/'; to='/foo'
+return t.slice(o+c)}else i>l&&(47/*/*/===e.charCodeAt(r+c)?// For example: from='/foo/bar/baz'; to='/foo/bar'
+a=c:0===c&&// For example: from='/foo'; to='/'
+(a=0));break}var u=e.charCodeAt(r+c);if(u!==t.charCodeAt(o+c))break;47/*/*/===u&&(a=c)}var f="";// Generate the relative path based on the path difference between `to`
+// and `from`
+for(c=r+a+1;c<=n;++c)(c===n||47/*/*/===e.charCodeAt(c))&&(0===f.length?f+="..":f+="/..");return(// Lastly, append the rest of the destination (`to`) path that comes after
+// the common path parts
+f.length>0?f+t.slice(o+a):(o+=a,47/*/*/===t.charCodeAt(o)&&++o,t.slice(o)))},_makeLong:function(e){return e},dirname:function(e){if(y(e),0===e.length)return".";for(var t=e.charCodeAt(0),r=47/*/*/===t,n=-1,i=!0,o=e.length-1;o>=1;--o)if(47/*/*/===(t=e.charCodeAt(o))){if(!i){n=o;break}}else i=!1;return -1===n?r?"/":".":r&&1===n?"//":e.slice(0,n)},basename:function(e,t){if(void 0!==t&&"string"!=typeof t)throw TypeError('"ext" argument must be a string');y(e);var r,n=0,i=-1,o=!0;if(void 0!==t&&t.length>0&&t.length<=e.length){if(t.length===e.length&&t===e)return"";var s=t.length-1,l=-1;for(r=e.length-1;r>=0;--r){var a=e.charCodeAt(r);if(47/*/*/===a){if(!o){n=r+1;break}}else -1===l&&(// We saw the first non-path separator, remember this index in case
+// we need it if the extension ends up not matching
+o=!1,l=r+1),s>=0&&(a===t.charCodeAt(s)?-1==--s&&// component
+(i=r):(// Extension does not match, so our result is the entire path
+// component
+s=-1,i=l))}return n===i?i=l:-1===i&&(i=e.length),e.slice(n,i)}for(r=e.length-1;r>=0;--r)if(47/*/*/===e.charCodeAt(r)){if(!o){n=r+1;break}}else -1===i&&(// We saw the first non-path separator, mark this as the end of our
+// path component
+o=!1,i=r+1);return -1===i?"":e.slice(n,i)},extname:function(e){y(e);for(var t=-1,r=0,n=-1,i=!0,o=0,s=e.length-1;s>=0;--s){var l=e.charCodeAt(s);if(47/*/*/===l){// If we reached a path separator that was not part of a set of path
+// separators at the end of the string, stop now
+if(!i){r=s+1;break}continue}-1===n&&(// We saw the first non-path separator, mark this as the end of our
+// extension
+i=!1,n=s+1),46/*.*/===l?-1===t?t=s:1!==o&&(o=1):-1!==t&&// have a good chance at having a non-empty extension
+(o=-1)}return -1===t||-1===n||// We saw a non-dot character immediately before the dot
+0===o||// The (right-most) trimmed path component is exactly '..'
+1===o&&t===n-1&&t===r+1?"":e.slice(t,n)},format:function(e){var t,r;if(null===e||"object"!=typeof e)throw TypeError('The "pathObject" argument must be of type Object. Received type '+typeof e);return t=e.dir||e.root,r=e.base||(e.name||"")+(e.ext||""),t?t===e.root?t+r:t+"/"+r:r},parse:function(e){y(e);var t,r={root:"",dir:"",base:"",ext:"",name:""};if(0===e.length)return r;var n=e.charCodeAt(0),i=47/*/*/===n;i?(r.root="/",t=1):t=0;// Get non-dir info
+for(var o=-1,s=0,l=-1,a=!0,c=e.length-1,u=0;c>=t;--c){if(47/*/*/===(n=e.charCodeAt(c))){// If we reached a path separator that was not part of a set of path
+// separators at the end of the string, stop now
+if(!a){s=c+1;break}continue}-1===l&&(// We saw the first non-path separator, mark this as the end of our
+// extension
+a=!1,l=c+1),46/*.*/===n?-1===o?o=c:1!==u&&(u=1):-1!==o&&// have a good chance at having a non-empty extension
+(u=-1)}return -1===o||-1===l||// We saw a non-dot character immediately before the dot
+0===u||// The (right-most) trimmed path component is exactly '..'
+1===u&&o===l-1&&o===s+1?-1!==l&&(0===s&&i?r.base=r.name=e.slice(1,l):r.base=r.name=e.slice(s,l)):(0===s&&i?(r.name=e.slice(1,o),r.base=e.slice(1,l)):(r.name=e.slice(s,o),r.base=e.slice(s,l)),r.ext=e.slice(o,l)),s>0?r.dir=e.slice(0,s-1):i&&(r.dir="/"),r},sep:"/",delimiter:":",win32:null,posix:null};v.posix=v,m=v;var k={},A={};const j=(e,{skip:t=[],key:r=!1,value:n=!0}={},...i)=>{let o=i.map(i=>{("string"==typeof t||[null,void 0].includes(t))&&(t=[t]);let o=[],s=[];if(t.forEach(e=>"object"==typeof e&&null!==e?s.push(e):o.push(e)),o.includes(typeof i)||o.includes(i)||s.some(e=>i instanceof e))return i;if(null===i)return e(null);if(["number","string","boolean","bigint","undefined"].includes(typeof i))return e(i);if("symbol"==typeof i)throw Error("symbols are not supported yet !");if(i instanceof Array)return i.map(t=>j(e,{},t));if(ArrayBuffer.isView(i))return Array.from(i).map(t=>e(t));if(i instanceof Set)return new Set(j(e,{},...[...i]));if(i instanceof WeakSet)throw Error("WeakSets not supported yet !");if(i instanceof WeakMap)throw Error("WeakMaps not supported yet !");if(i instanceof Map)return new Map([...i].map(t=>[r?j(e,{},t[0]):t[0],n?j(e,{},t[1]):t[1]]));if(i instanceof Object)return Object.fromEntries(Object.entries(i).map(([t,i])=>[r?j(e,{},t):t,n?j(e,{},i):i]));throw Error("Uncategorised data")});return 1===o.length?o[0]:o};var w=(A={mapfun:j,flat_obj:/*
+Developped by zakaria elaloui
+Github : https://github.com/zakarialaoui10
+*/function(e,t=1/0,r=".",n="_"){let i={},o=0;return!function e(s,l=[]){if(o===t){Object.assign(i,s);return}for(let t in s){let a=s[t],c=[...l,t];if("object"!=typeof a||Array.isArray(a)){let e=c.join(r).replace(RegExp(`\\${r}`,"g"),n);i[e]=a}else e(a,c);o++}}(e),i}}).mapfun,C=A.flat_obj,T={},_=(T={should_skip_file:function(e){let t=m.normalize(e);return!!(this?.options?.skip?.folder?.includes(m.basename(t))||this?.options?.skip?.file?.includes(m.basename(t))||this?.options?.skip?.extension?.includes(m.extname(t).slice(1)))},should_skip_folder:function(e){if("string"!=typeof e)return!1;let t=m.normalize(e);return!!this?.options?.skipFolder?.includes(m.basename(t))}}).should_skip_file,O=T.should_skip_folder,x={},E=(x={is_directory:function(e){return g.statSync(e).isDirectory()},add_to_tree:function(e,t){let r=e.split(m.sep),n=r.length-1;r.reduce((e,r,i)=>(e[r]||(e[r]=i===n?t:{}),e[r]),this.tree)}}).is_directory,S={sort_files:function(e,t=1){return e.sort((e,r)=>{let n=m.join(this.root,e),i=m.join(this.root,r),o=E(n),s=E(i);if(o&&!s)return -1;// Directories come before files
+// Files come after directories
+if(!o&&s)return 1;if(o&&s)return e.localeCompare(r);// Sort directories by name
+// If both are files, perform the sorting based on your criteria
+let l=g.statSync(n),a=g.statSync(i),c=m.extname(n).slice(1),u=m.extname(i).slice(1),f=g.readFileSync(n,"utf8").split("\n").length,h=g.readFileSync(i,"utf8").split("\n").length;// Customize sorting based on sortBy option (name, size, created, modified, extension, lines, path, etc.)
+switch(this.sortBy.toLowerCase()){case"name":return t*e.localeCompare(r);case"size":return t*(l.size-a.size);case"created":return t*(l.birthtime-a.birthtime);case"modified":return t*(l.mtime.getTime()-a.mtime.getTime());case"extension":return t*c.localeCompare(u);case"lines":return t*(f-h);case"path":return t*i.localeCompare(n);default:return 0}})}}.sort_files,z=x.is_directory,F=T.should_skip_file,L={filter_files:function(e){return e.filter(e=>{if(z(m.join(this.root,e)))return!0;// Skip directories
+let t=m.join(this.root,e),r=F.call(this,t);return!r})}}.filter_files,B=x.add_to_tree,R=function(e){let t=g.statSync(e),r={created:t.birthtime,modified:t.mtime,permissions:t.mode};return r};class I{constructor(e,t={},r={}){this.root=e,this.options=t,this.callbacks=r,this.tree={},this.sortBy=t.sortBy||"name",this.generate()}generate(){let e=g.statSync(this.root);if(!e.isDirectory())return null;let t=g.readdirSync(this.root),r=L.call(this,t),n=S.call(this,r);//this.tree=tree;
+return n.forEach(e=>{let t=m.join(this.root,e);if(O.call(this,e))return;let r=g.statSync(t);if(r.isDirectory()){let e=new I(t,this.options,this.callbacks);return Object.assign(this.tree,{[m.basename(t)]:e.tree}),this}let n=m.parse(e).name;!_.call(this,t)&&this.options?.fileContent&&this.addFileInfo(t,n)}),this.tree}addFileInfo(e,t){let r=g.readFileSync(e,"utf8"),n={},i={},o=m.basename(e),[s,l]=o.split("."),a=g.statSync(e).size,c=r.split("\n").length,u=R.call(this,e);this.options?.fileContent&&Object.assign(n,{content:r}),this.options?.fileExtension&&Object.assign(n,{extension:l}),this.options?.fileName&&Object.assign(n,{name:s}),Object.assign(i,{length:a}),Object.assign(i,{size:a/1024}),Object.assign(i,{lines:c}),Object.assign(n,{stats:i}),Object.assign(n,{metadata:u}),this?.callbacks?.map(t=>t(e,n)),B.call(this,t+"_"+l,n)}write(e,t){let r=JSON.stringify(this.tree,null,2),n=m.join(e,t);// Pretty-print the JSON
+return g.writeFileSync(n,r,"utf8"),console.log(`Tree written to ${n}`),this}flat(e=1,t="_"){return this.tree=C(this.tree,e,t),this}reduce(){return this}sort(){return this}filter(){return this}map(e,t={}){return this.tree=w(e,t,this.tree),this}}k=(e,t,r=[])=>new I(e,t,r);const M=m.join(n.cwd(),".","Articles"),W=m.join(n.cwd(),"Target");console.log({ROOT:M,TARGET:W});const D=k(M,{fileContent:!0,sortBy:"extension",skipFile:["ger.md"],skipFolder:["to be skipped"],skipExtension:["sd"]});console.log(D.tree),D.write(n.cwd(),"generated.json");

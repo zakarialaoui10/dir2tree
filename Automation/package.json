@@ -3,7 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "source": "index.js",
-  "main": "dist/index.js",
+  "type": "module",
+  "targets": {
+    "regular": {
+      "outputFormat": "esmodule",
+      "distDir": "./dist",
+      "context": "browser",
+      "optimize": true,
+      "sourceMap": false
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "parcel build"
