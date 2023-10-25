@@ -4,5 +4,5 @@ working-directory:
   Automation 
 runs:
   using: 'node16'
-  main: 'index.js'
+  main: 'Automation/index.js'
   
