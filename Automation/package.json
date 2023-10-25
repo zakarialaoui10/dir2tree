@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "source": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "targets": {
     "regular": {
       "outputFormat": "esmodule",

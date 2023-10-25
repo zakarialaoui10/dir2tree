@@ -1,6 +1,5 @@
-const fs=require("fs")
 const path=require("path")
-const dir2tree=require("dir2tree")
+const dir2tree=require("../src/index.js")
 const ROOT = path.join(process.cwd(),'.',"Articles");
 const TARGET = path.join(process.cwd(),"Target");
 console.log({ROOT,TARGET})
