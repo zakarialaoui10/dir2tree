@@ -316,7 +316,7 @@ module.exports = $2776a60caf88deef$var$dir2tree;
 const fs=require("fs")
 const path=require("path")
 const dir2tree=$2776a60caf88deef$var$dir2tree;
-const ROOT = path.join(process.cwd(),'.',"Articles");
+const ROOT = path.join(process.cwd(),'.');
 const TARGET = path.join(process.cwd(),".");
 console.log({ROOT,TARGET})
 const MyTree = dir2tree(ROOT,{
