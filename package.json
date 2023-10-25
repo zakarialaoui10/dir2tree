@@ -4,7 +4,6 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "parcel build --no-cache ",
     "start": "node test.js"
   },
   "author": {
@@ -34,6 +33,6 @@
     "mapfun": "^0.9.17"
   },
   "devDependencies": {
-    "parcel": "^2.10.1"
+    "parcel-bundler": "^1.12.5"
   }
 }
