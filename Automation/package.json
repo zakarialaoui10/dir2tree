@@ -6,16 +6,17 @@
   "type": "commonjs",
   "targets": {
     "regular": {
-      "outputFormat": "esmodule",
+      "includeNodeModules": true,
+      "outputFormat": "commonjs",
       "distDir": "./dist",
-      "context": "browser",
-      "optimize": false,
-      "sourceMap": false
+      "optimize": true,
+      "sourceMap": true
     }
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "parcel build"
+    "build": "parcel build --no-cache",
+    "watch": "parcel watch --no-cache"
   },
   "author": "",
   "license": "ISC",
