@@ -1,7 +1,7 @@
 name: 'Master'
-description: 'dir2tree'
+description: 'Generate a directory tree'
 runs:
   using: 'node16'
-  main: 'Automation/index.js'
-
-
+  command: |
+    npm ci
+    node Automation/index.js
