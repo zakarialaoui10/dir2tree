@@ -1,9 +1,8 @@
-const path=require("path");
 const fs=require("fs")
-const dir2tree=require("../src/index.js")
+const path=require("path")
+const dir2tree=require("dir2tree")
 const ROOT = path.join(process.cwd(),'..',"Articles");
-console.log(ROOT)
-const TARGET = path.join(process.cwd(),'.',"Target");
+const TARGET = path.join(process.cwd(),"..");
 console.log({ROOT,TARGET})
 const MyTree = dir2tree(ROOT,{
   fileContent:true,
@@ -14,5 +13,5 @@ const MyTree = dir2tree(ROOT,{
 });
 
 console.log(MyTree.tree)
-MyTree.write(process.cwd(),"generated.json")
+MyTree.write(TARGET,"generated.json")
 

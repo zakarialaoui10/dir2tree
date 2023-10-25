@@ -2,30 +2,14 @@
   "name": "automation",
   "version": "1.0.0",
   "description": "",
-  "source": "index.js",
-  "type": "commonjs",
-  "targets": {
-    "regular": {
-      "includeNodeModules": true,
-      "outputFormat": "commonjs",
-      "distDir": "./dist",
-      "optimize": true,
-      "sourceMap": false
-    }
-  },
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node index.js",
-    "build": "parcel build --no-cache",
-    "watch": "parcel watch --no-cache"
+    "start": "node index.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "dir2tree": "^0.2.0",
-    "mapfun": "^0.9.17"
-  },
-  "devDependencies": {
-    "parcel": "^2.10.1"
+    "dir2tree": "^0.2.0"
   }
 }
