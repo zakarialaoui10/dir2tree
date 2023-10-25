@@ -9,7 +9,7 @@
       "outputFormat": "esmodule",
       "distDir": "./dist",
       "context": "browser",
-      "optimize": true,
+      "optimize": false,
       "sourceMap": false
     }
   },

@@ -1,59 +1,909 @@
-var e,t,r,n={},i=n={};function o(){throw Error("setTimeout has not been defined")}function s(){throw Error("clearTimeout has not been defined")}function l(t){if(e===setTimeout)return setTimeout(t,0);// if setTimeout wasn't available but was latter defined
-if((e===o||!e)&&setTimeout)return e=setTimeout,setTimeout(t,0);try{// when when somebody has screwed with setTimeout but no I.E. maddness
-return e(t,0)}catch(r){try{// When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-return e.call(null,t,0)}catch(r){// same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-return e.call(this,t,0)}}}!function(){try{e="function"==typeof setTimeout?setTimeout:o}catch(t){e=o}try{t="function"==typeof clearTimeout?clearTimeout:s}catch(e){t=s}}();var a=[],c=!1,u=-1;function f(){c&&r&&(c=!1,r.length?a=r.concat(a):u=-1,a.length&&h())}function h(){if(!c){var e=l(f);c=!0;for(var n=a.length;n;){for(r=a,a=[];++u<n;)r&&r[u].run();u=-1,n=a.length}r=null,c=!1,function(e){if(t===clearTimeout)return clearTimeout(e);// if clearTimeout wasn't available but was latter defined
-if((t===s||!t)&&clearTimeout)return t=clearTimeout,clearTimeout(e);try{// when when somebody has screwed with setTimeout but no I.E. maddness
-t(e)}catch(r){try{// When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-return t.call(null,e)}catch(r){// same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-// Some versions of I.E. have different rules for clearTimeout vs setTimeout
-return t.call(this,e)}}}(e)}}// v8 likes predictible objects
-function d(e,t){this.fun=e,this.array=t}function p(){}i.nextTick=function(e){var t=Array(arguments.length-1);if(arguments.length>1)for(var r=1;r<arguments.length;r++)t[r-1]=arguments[r];a.push(new d(e,t)),1!==a.length||c||l(h)},d.prototype.run=function(){this.fun.apply(null,this.array)},i.title="browser",i.browser=!0,i.env={},i.argv=[],i.version="",i.versions={},i.on=p,i.addListener=p,i.once=p,i.off=p,i.removeListener=p,i.removeAllListeners=p,i.emit=p,i.prependListener=p,i.prependOnceListener=p,i.listeners=function(e){return[]},i.binding=function(e){throw Error("process.binding is not supported")},i.cwd=function(){return"/"},i.chdir=function(e){throw Error("process.chdir is not supported")},i.umask=function(){return 0};var g={};function m(e){if("string"!=typeof e)throw TypeError("Path must be a string. Received "+JSON.stringify(e))}// Resolves . and .. elements in a path with directory names
-function y(e,t){for(var r,n="",i=0,o=-1,s=0,l=0;l<=e.length;++l){if(l<e.length)r=e.charCodeAt(l);else if(47/*/*/===r)break;else r=47/*/*/;if(47/*/*/===r){if(o===l-1||1===s);else if(o!==l-1&&2===s){if(n.length<2||2!==i||46/*.*/!==n.charCodeAt(n.length-1)||46/*.*/!==n.charCodeAt(n.length-2)){if(n.length>2){var a=n.lastIndexOf("/");if(a!==n.length-1){-1===a?(n="",i=0):i=(n=n.slice(0,a)).length-1-n.lastIndexOf("/"),o=l,s=0;continue}}else if(2===n.length||1===n.length){n="",i=0,o=l,s=0;continue}}t&&(n.length>0?n+="/..":n="..",i=2)}else n.length>0?n+="/"+e.slice(o+1,l):n=e.slice(o+1,l),i=l-o-1;o=l,s=0}else 46/*.*/===r&&-1!==s?++s:s=-1}return n}var b={// path.resolve([from ...], to)
-resolve:function(){for(var e,t,r="",i=!1,o=arguments.length-1;o>=-1&&!i;o--)o>=0?t=arguments[o]:(void 0===e&&(e=n.cwd()),t=e),m(t),0!==t.length&&(r=t+"/"+r,i=47/*/*/===t.charCodeAt(0));return(// At this point the path should be resolved to a full absolute path, but
-// handle relative paths to be safe (might happen when process.cwd() fails)
-// Normalize the path
-r=y(r,!i),i)?r.length>0?"/"+r:"/":r.length>0?r:"."},normalize:function(e){if(m(e),0===e.length)return".";var t=47/*/*/===e.charCodeAt(0),r=47/*/*/===e.charCodeAt(e.length-1);return(0!==// Normalize the path
-(e=y(e,!t)).length||t||(e="."),e.length>0&&r&&(e+="/"),t)?"/"+e:e},isAbsolute:function(e){return m(e),e.length>0&&47/*/*/===e.charCodeAt(0)},join:function(){if(0==arguments.length)return".";for(var e,t=0;t<arguments.length;++t){var r=arguments[t];m(r),r.length>0&&(void 0===e?e=r:e+="/"+r)}return void 0===e?".":b.normalize(e)},relative:function(e,t){if(m(e),m(t),e===t||(e=b.resolve(e))===(t=b.resolve(t)))return"";for(// Trim any leading backslashes
-var r=1;r<e.length&&47/*/*/===e.charCodeAt(r);++r);for(var n=e.length,i=n-r,o=1;o<t.length&&47/*/*/===t.charCodeAt(o);++o);for(var s=t.length-o,l=i<s?i:s,a=-1,c=0;c<=l;++c){if(c===l){if(s>l){if(47/*/*/===t.charCodeAt(o+c))// For example: from='/foo/bar'; to='/foo/bar/baz'
-return t.slice(o+c+1);if(0===c)// For example: from='/'; to='/foo'
-return t.slice(o+c)}else i>l&&(47/*/*/===e.charCodeAt(r+c)?// For example: from='/foo/bar/baz'; to='/foo/bar'
-a=c:0===c&&// For example: from='/foo'; to='/'
-(a=0));break}var u=e.charCodeAt(r+c);if(u!==t.charCodeAt(o+c))break;47/*/*/===u&&(a=c)}var f="";// Generate the relative path based on the path difference between `to`
-// and `from`
-for(c=r+a+1;c<=n;++c)(c===n||47/*/*/===e.charCodeAt(c))&&(0===f.length?f+="..":f+="/..");return(// Lastly, append the rest of the destination (`to`) path that comes after
-// the common path parts
-f.length>0?f+t.slice(o+a):(o+=a,47/*/*/===t.charCodeAt(o)&&++o,t.slice(o)))},_makeLong:function(e){return e},dirname:function(e){if(m(e),0===e.length)return".";for(var t=e.charCodeAt(0),r=47/*/*/===t,n=-1,i=!0,o=e.length-1;o>=1;--o)if(47/*/*/===(t=e.charCodeAt(o))){if(!i){n=o;break}}else i=!1;return -1===n?r?"/":".":r&&1===n?"//":e.slice(0,n)},basename:function(e,t){if(void 0!==t&&"string"!=typeof t)throw TypeError('"ext" argument must be a string');m(e);var r,n=0,i=-1,o=!0;if(void 0!==t&&t.length>0&&t.length<=e.length){if(t.length===e.length&&t===e)return"";var s=t.length-1,l=-1;for(r=e.length-1;r>=0;--r){var a=e.charCodeAt(r);if(47/*/*/===a){if(!o){n=r+1;break}}else -1===l&&(// We saw the first non-path separator, remember this index in case
-// we need it if the extension ends up not matching
-o=!1,l=r+1),s>=0&&(a===t.charCodeAt(s)?-1==--s&&// component
-(i=r):(// Extension does not match, so our result is the entire path
-// component
-s=-1,i=l))}return n===i?i=l:-1===i&&(i=e.length),e.slice(n,i)}for(r=e.length-1;r>=0;--r)if(47/*/*/===e.charCodeAt(r)){if(!o){n=r+1;break}}else -1===i&&(// We saw the first non-path separator, mark this as the end of our
-// path component
-o=!1,i=r+1);return -1===i?"":e.slice(n,i)},extname:function(e){m(e);for(var t=-1,r=0,n=-1,i=!0,o=0,s=e.length-1;s>=0;--s){var l=e.charCodeAt(s);if(47/*/*/===l){// If we reached a path separator that was not part of a set of path
-// separators at the end of the string, stop now
-if(!i){r=s+1;break}continue}-1===n&&(// We saw the first non-path separator, mark this as the end of our
-// extension
-i=!1,n=s+1),46/*.*/===l?-1===t?t=s:1!==o&&(o=1):-1!==t&&// have a good chance at having a non-empty extension
-(o=-1)}return -1===t||-1===n||// We saw a non-dot character immediately before the dot
-0===o||// The (right-most) trimmed path component is exactly '..'
-1===o&&t===n-1&&t===r+1?"":e.slice(t,n)},format:function(e){var t,r;if(null===e||"object"!=typeof e)throw TypeError('The "pathObject" argument must be of type Object. Received type '+typeof e);return t=e.dir||e.root,r=e.base||(e.name||"")+(e.ext||""),t?t===e.root?t+r:t+"/"+r:r},parse:function(e){m(e);var t,r={root:"",dir:"",base:"",ext:"",name:""};if(0===e.length)return r;var n=e.charCodeAt(0),i=47/*/*/===n;i?(r.root="/",t=1):t=0;// Get non-dir info
-for(var o=-1,s=0,l=-1,a=!0,c=e.length-1,u=0;c>=t;--c){if(47/*/*/===(n=e.charCodeAt(c))){// If we reached a path separator that was not part of a set of path
-// separators at the end of the string, stop now
-if(!a){s=c+1;break}continue}-1===l&&(// We saw the first non-path separator, mark this as the end of our
-// extension
-a=!1,l=c+1),46/*.*/===n?-1===o?o=c:1!==u&&(u=1):-1!==o&&// have a good chance at having a non-empty extension
-(u=-1)}return -1===o||-1===l||// We saw a non-dot character immediately before the dot
-0===u||// The (right-most) trimmed path component is exactly '..'
-1===u&&o===l-1&&o===s+1?-1!==l&&(0===s&&i?r.base=r.name=e.slice(1,l):r.base=r.name=e.slice(s,l)):(0===s&&i?(r.name=e.slice(1,o),r.base=e.slice(1,l)):(r.name=e.slice(s,o),r.base=e.slice(s,l)),r.ext=e.slice(o,l)),s>0?r.dir=e.slice(0,s-1):i&&(r.dir="/"),r},sep:"/",delimiter:":",win32:null,posix:null};b.posix=b,g=b;var v={},k={},A={};const j=(e,{skip:t=[],key:r=!1,value:n=!0}={},...i)=>{let o=i.map(i=>{("string"==typeof t||[null,void 0].includes(t))&&(t=[t]);let o=[],s=[];if(t.forEach(e=>"object"==typeof e&&null!==e?s.push(e):o.push(e)),o.includes(typeof i)||o.includes(i)||s.some(e=>i instanceof e))return i;if(null===i)return e(null);if(["number","string","boolean","bigint","undefined"].includes(typeof i))return e(i);if("symbol"==typeof i)throw Error("symbols are not supported yet !");if(i instanceof Array)return i.map(t=>j(e,{},t));if(ArrayBuffer.isView(i))return Array.from(i).map(t=>e(t));if(i instanceof Set)return new Set(j(e,{},...[...i]));if(i instanceof WeakSet)throw Error("WeakSets not supported yet !");if(i instanceof WeakMap)throw Error("WeakMaps not supported yet !");if(i instanceof Map)return new Map([...i].map(t=>[r?j(e,{},t[0]):t[0],n?j(e,{},t[1]):t[1]]));if(i instanceof Object)return Object.fromEntries(Object.entries(i).map(([t,i])=>[r?j(e,{},t):t,n?j(e,{},i):i]));throw Error("Uncategorised data")});return 1===o.length?o[0]:o};var w=(A={mapfun:j,flat_obj:/*
+var $7d1341245baded19$exports = {};
+// shim for using process in browser
+var $7d1341245baded19$var$process = $7d1341245baded19$exports = {};
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+var $7d1341245baded19$var$cachedSetTimeout;
+var $7d1341245baded19$var$cachedClearTimeout;
+function $7d1341245baded19$var$defaultSetTimout() {
+    throw new Error("setTimeout has not been defined");
+}
+function $7d1341245baded19$var$defaultClearTimeout() {
+    throw new Error("clearTimeout has not been defined");
+}
+(function() {
+    try {
+        if (typeof setTimeout === "function") $7d1341245baded19$var$cachedSetTimeout = setTimeout;
+        else $7d1341245baded19$var$cachedSetTimeout = $7d1341245baded19$var$defaultSetTimout;
+    } catch (e) {
+        $7d1341245baded19$var$cachedSetTimeout = $7d1341245baded19$var$defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === "function") $7d1341245baded19$var$cachedClearTimeout = clearTimeout;
+        else $7d1341245baded19$var$cachedClearTimeout = $7d1341245baded19$var$defaultClearTimeout;
+    } catch (e) {
+        $7d1341245baded19$var$cachedClearTimeout = $7d1341245baded19$var$defaultClearTimeout;
+    }
+})();
+function $7d1341245baded19$var$runTimeout(fun) {
+    if ($7d1341245baded19$var$cachedSetTimeout === setTimeout) //normal enviroments in sane situations
+    return setTimeout(fun, 0);
+    // if setTimeout wasn't available but was latter defined
+    if (($7d1341245baded19$var$cachedSetTimeout === $7d1341245baded19$var$defaultSetTimout || !$7d1341245baded19$var$cachedSetTimeout) && setTimeout) {
+        $7d1341245baded19$var$cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return $7d1341245baded19$var$cachedSetTimeout(fun, 0);
+    } catch (e) {
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return $7d1341245baded19$var$cachedSetTimeout.call(null, fun, 0);
+        } catch (e) {
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return $7d1341245baded19$var$cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+}
+function $7d1341245baded19$var$runClearTimeout(marker) {
+    if ($7d1341245baded19$var$cachedClearTimeout === clearTimeout) //normal enviroments in sane situations
+    return clearTimeout(marker);
+    // if clearTimeout wasn't available but was latter defined
+    if (($7d1341245baded19$var$cachedClearTimeout === $7d1341245baded19$var$defaultClearTimeout || !$7d1341245baded19$var$cachedClearTimeout) && clearTimeout) {
+        $7d1341245baded19$var$cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return $7d1341245baded19$var$cachedClearTimeout(marker);
+    } catch (e) {
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return $7d1341245baded19$var$cachedClearTimeout.call(null, marker);
+        } catch (e) {
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return $7d1341245baded19$var$cachedClearTimeout.call(this, marker);
+        }
+    }
+}
+var $7d1341245baded19$var$queue = [];
+var $7d1341245baded19$var$draining = false;
+var $7d1341245baded19$var$currentQueue;
+var $7d1341245baded19$var$queueIndex = -1;
+function $7d1341245baded19$var$cleanUpNextTick() {
+    if (!$7d1341245baded19$var$draining || !$7d1341245baded19$var$currentQueue) return;
+    $7d1341245baded19$var$draining = false;
+    if ($7d1341245baded19$var$currentQueue.length) $7d1341245baded19$var$queue = $7d1341245baded19$var$currentQueue.concat($7d1341245baded19$var$queue);
+    else $7d1341245baded19$var$queueIndex = -1;
+    if ($7d1341245baded19$var$queue.length) $7d1341245baded19$var$drainQueue();
+}
+function $7d1341245baded19$var$drainQueue() {
+    if ($7d1341245baded19$var$draining) return;
+    var timeout = $7d1341245baded19$var$runTimeout($7d1341245baded19$var$cleanUpNextTick);
+    $7d1341245baded19$var$draining = true;
+    var len = $7d1341245baded19$var$queue.length;
+    while(len){
+        $7d1341245baded19$var$currentQueue = $7d1341245baded19$var$queue;
+        $7d1341245baded19$var$queue = [];
+        while(++$7d1341245baded19$var$queueIndex < len)if ($7d1341245baded19$var$currentQueue) $7d1341245baded19$var$currentQueue[$7d1341245baded19$var$queueIndex].run();
+        $7d1341245baded19$var$queueIndex = -1;
+        len = $7d1341245baded19$var$queue.length;
+    }
+    $7d1341245baded19$var$currentQueue = null;
+    $7d1341245baded19$var$draining = false;
+    $7d1341245baded19$var$runClearTimeout(timeout);
+}
+$7d1341245baded19$var$process.nextTick = function(fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) for(var i = 1; i < arguments.length; i++)args[i - 1] = arguments[i];
+    $7d1341245baded19$var$queue.push(new $7d1341245baded19$var$Item(fun, args));
+    if ($7d1341245baded19$var$queue.length === 1 && !$7d1341245baded19$var$draining) $7d1341245baded19$var$runTimeout($7d1341245baded19$var$drainQueue);
+};
+// v8 likes predictible objects
+function $7d1341245baded19$var$Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+$7d1341245baded19$var$Item.prototype.run = function() {
+    this.fun.apply(null, this.array);
+};
+$7d1341245baded19$var$process.title = "browser";
+$7d1341245baded19$var$process.browser = true;
+$7d1341245baded19$var$process.env = {};
+$7d1341245baded19$var$process.argv = [];
+$7d1341245baded19$var$process.version = ""; // empty string to avoid regexp issues
+$7d1341245baded19$var$process.versions = {};
+function $7d1341245baded19$var$noop() {}
+$7d1341245baded19$var$process.on = $7d1341245baded19$var$noop;
+$7d1341245baded19$var$process.addListener = $7d1341245baded19$var$noop;
+$7d1341245baded19$var$process.once = $7d1341245baded19$var$noop;
+$7d1341245baded19$var$process.off = $7d1341245baded19$var$noop;
+$7d1341245baded19$var$process.removeListener = $7d1341245baded19$var$noop;
+$7d1341245baded19$var$process.removeAllListeners = $7d1341245baded19$var$noop;
+$7d1341245baded19$var$process.emit = $7d1341245baded19$var$noop;
+$7d1341245baded19$var$process.prependListener = $7d1341245baded19$var$noop;
+$7d1341245baded19$var$process.prependOnceListener = $7d1341245baded19$var$noop;
+$7d1341245baded19$var$process.listeners = function(name) {
+    return [];
+};
+$7d1341245baded19$var$process.binding = function(name) {
+    throw new Error("process.binding is not supported");
+};
+$7d1341245baded19$var$process.cwd = function() {
+    return "/";
+};
+$7d1341245baded19$var$process.chdir = function(dir) {
+    throw new Error("process.chdir is not supported");
+};
+$7d1341245baded19$var$process.umask = function() {
+    return 0;
+};
+
+
+var $c1b234cf9fbd8bad$exports = {};
+// 'path' module extracted from Node.js v8.11.1 (only the posix part)
+// transplited with Babel
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+"use strict";
+function $c1b234cf9fbd8bad$var$assertPath(path) {
+    if (typeof path !== "string") throw new TypeError("Path must be a string. Received " + JSON.stringify(path));
+}
+// Resolves . and .. elements in a path with directory names
+function $c1b234cf9fbd8bad$var$normalizeStringPosix(path, allowAboveRoot) {
+    var res = "";
+    var lastSegmentLength = 0;
+    var lastSlash = -1;
+    var dots = 0;
+    var code;
+    for(var i = 0; i <= path.length; ++i){
+        if (i < path.length) code = path.charCodeAt(i);
+        else if (code === 47 /*/*/ ) break;
+        else code = 47 /*/*/ ;
+        if (code === 47 /*/*/ ) {
+            if (lastSlash === i - 1 || dots === 1) ;
+            else if (lastSlash !== i - 1 && dots === 2) {
+                if (res.length < 2 || lastSegmentLength !== 2 || res.charCodeAt(res.length - 1) !== 46 /*.*/  || res.charCodeAt(res.length - 2) !== 46 /*.*/ ) {
+                    if (res.length > 2) {
+                        var lastSlashIndex = res.lastIndexOf("/");
+                        if (lastSlashIndex !== res.length - 1) {
+                            if (lastSlashIndex === -1) {
+                                res = "";
+                                lastSegmentLength = 0;
+                            } else {
+                                res = res.slice(0, lastSlashIndex);
+                                lastSegmentLength = res.length - 1 - res.lastIndexOf("/");
+                            }
+                            lastSlash = i;
+                            dots = 0;
+                            continue;
+                        }
+                    } else if (res.length === 2 || res.length === 1) {
+                        res = "";
+                        lastSegmentLength = 0;
+                        lastSlash = i;
+                        dots = 0;
+                        continue;
+                    }
+                }
+                if (allowAboveRoot) {
+                    if (res.length > 0) res += "/..";
+                    else res = "..";
+                    lastSegmentLength = 2;
+                }
+            } else {
+                if (res.length > 0) res += "/" + path.slice(lastSlash + 1, i);
+                else res = path.slice(lastSlash + 1, i);
+                lastSegmentLength = i - lastSlash - 1;
+            }
+            lastSlash = i;
+            dots = 0;
+        } else if (code === 46 /*.*/  && dots !== -1) ++dots;
+        else dots = -1;
+    }
+    return res;
+}
+function $c1b234cf9fbd8bad$var$_format(sep, pathObject) {
+    var dir = pathObject.dir || pathObject.root;
+    var base = pathObject.base || (pathObject.name || "") + (pathObject.ext || "");
+    if (!dir) return base;
+    if (dir === pathObject.root) return dir + base;
+    return dir + sep + base;
+}
+var $c1b234cf9fbd8bad$var$posix = {
+    // path.resolve([from ...], to)
+    resolve: function resolve() {
+        var resolvedPath = "";
+        var resolvedAbsolute = false;
+        var cwd;
+        for(var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--){
+            var path;
+            if (i >= 0) path = arguments[i];
+            else {
+                if (cwd === undefined) cwd = $7d1341245baded19$exports.cwd();
+                path = cwd;
+            }
+            $c1b234cf9fbd8bad$var$assertPath(path);
+            // Skip empty entries
+            if (path.length === 0) continue;
+            resolvedPath = path + "/" + resolvedPath;
+            resolvedAbsolute = path.charCodeAt(0) === 47 /*/*/ ;
+        }
+        // At this point the path should be resolved to a full absolute path, but
+        // handle relative paths to be safe (might happen when process.cwd() fails)
+        // Normalize the path
+        resolvedPath = $c1b234cf9fbd8bad$var$normalizeStringPosix(resolvedPath, !resolvedAbsolute);
+        if (resolvedAbsolute) {
+            if (resolvedPath.length > 0) return "/" + resolvedPath;
+            else return "/";
+        } else if (resolvedPath.length > 0) return resolvedPath;
+        else return ".";
+    },
+    normalize: function normalize(path) {
+        $c1b234cf9fbd8bad$var$assertPath(path);
+        if (path.length === 0) return ".";
+        var isAbsolute = path.charCodeAt(0) === 47 /*/*/ ;
+        var trailingSeparator = path.charCodeAt(path.length - 1) === 47 /*/*/ ;
+        // Normalize the path
+        path = $c1b234cf9fbd8bad$var$normalizeStringPosix(path, !isAbsolute);
+        if (path.length === 0 && !isAbsolute) path = ".";
+        if (path.length > 0 && trailingSeparator) path += "/";
+        if (isAbsolute) return "/" + path;
+        return path;
+    },
+    isAbsolute: function isAbsolute(path) {
+        $c1b234cf9fbd8bad$var$assertPath(path);
+        return path.length > 0 && path.charCodeAt(0) === 47 /*/*/ ;
+    },
+    join: function join() {
+        if (arguments.length === 0) return ".";
+        var joined;
+        for(var i = 0; i < arguments.length; ++i){
+            var arg = arguments[i];
+            $c1b234cf9fbd8bad$var$assertPath(arg);
+            if (arg.length > 0) {
+                if (joined === undefined) joined = arg;
+                else joined += "/" + arg;
+            }
+        }
+        if (joined === undefined) return ".";
+        return $c1b234cf9fbd8bad$var$posix.normalize(joined);
+    },
+    relative: function relative(from, to) {
+        $c1b234cf9fbd8bad$var$assertPath(from);
+        $c1b234cf9fbd8bad$var$assertPath(to);
+        if (from === to) return "";
+        from = $c1b234cf9fbd8bad$var$posix.resolve(from);
+        to = $c1b234cf9fbd8bad$var$posix.resolve(to);
+        if (from === to) return "";
+        // Trim any leading backslashes
+        var fromStart = 1;
+        for(; fromStart < from.length; ++fromStart){
+            if (from.charCodeAt(fromStart) !== 47 /*/*/ ) break;
+        }
+        var fromEnd = from.length;
+        var fromLen = fromEnd - fromStart;
+        // Trim any leading backslashes
+        var toStart = 1;
+        for(; toStart < to.length; ++toStart){
+            if (to.charCodeAt(toStart) !== 47 /*/*/ ) break;
+        }
+        var toEnd = to.length;
+        var toLen = toEnd - toStart;
+        // Compare paths to find the longest common path from root
+        var length = fromLen < toLen ? fromLen : toLen;
+        var lastCommonSep = -1;
+        var i = 0;
+        for(; i <= length; ++i){
+            if (i === length) {
+                if (toLen > length) {
+                    if (to.charCodeAt(toStart + i) === 47 /*/*/ ) // We get here if `from` is the exact base path for `to`.
+                    // For example: from='/foo/bar'; to='/foo/bar/baz'
+                    return to.slice(toStart + i + 1);
+                    else if (i === 0) // We get here if `from` is the root
+                    // For example: from='/'; to='/foo'
+                    return to.slice(toStart + i);
+                } else if (fromLen > length) {
+                    if (from.charCodeAt(fromStart + i) === 47 /*/*/ ) // We get here if `to` is the exact base path for `from`.
+                    // For example: from='/foo/bar/baz'; to='/foo/bar'
+                    lastCommonSep = i;
+                    else if (i === 0) // We get here if `to` is the root.
+                    // For example: from='/foo'; to='/'
+                    lastCommonSep = 0;
+                }
+                break;
+            }
+            var fromCode = from.charCodeAt(fromStart + i);
+            var toCode = to.charCodeAt(toStart + i);
+            if (fromCode !== toCode) break;
+            else if (fromCode === 47 /*/*/ ) lastCommonSep = i;
+        }
+        var out = "";
+        // Generate the relative path based on the path difference between `to`
+        // and `from`
+        for(i = fromStart + lastCommonSep + 1; i <= fromEnd; ++i)if (i === fromEnd || from.charCodeAt(i) === 47 /*/*/ ) {
+            if (out.length === 0) out += "..";
+            else out += "/..";
+        }
+        // Lastly, append the rest of the destination (`to`) path that comes after
+        // the common path parts
+        if (out.length > 0) return out + to.slice(toStart + lastCommonSep);
+        else {
+            toStart += lastCommonSep;
+            if (to.charCodeAt(toStart) === 47 /*/*/ ) ++toStart;
+            return to.slice(toStart);
+        }
+    },
+    _makeLong: function _makeLong(path) {
+        return path;
+    },
+    dirname: function dirname(path) {
+        $c1b234cf9fbd8bad$var$assertPath(path);
+        if (path.length === 0) return ".";
+        var code = path.charCodeAt(0);
+        var hasRoot = code === 47 /*/*/ ;
+        var end = -1;
+        var matchedSlash = true;
+        for(var i = path.length - 1; i >= 1; --i){
+            code = path.charCodeAt(i);
+            if (code === 47 /*/*/ ) {
+                if (!matchedSlash) {
+                    end = i;
+                    break;
+                }
+            } else // We saw the first non-path separator
+            matchedSlash = false;
+        }
+        if (end === -1) return hasRoot ? "/" : ".";
+        if (hasRoot && end === 1) return "//";
+        return path.slice(0, end);
+    },
+    basename: function basename(path, ext) {
+        if (ext !== undefined && typeof ext !== "string") throw new TypeError('"ext" argument must be a string');
+        $c1b234cf9fbd8bad$var$assertPath(path);
+        var start = 0;
+        var end = -1;
+        var matchedSlash = true;
+        var i;
+        if (ext !== undefined && ext.length > 0 && ext.length <= path.length) {
+            if (ext.length === path.length && ext === path) return "";
+            var extIdx = ext.length - 1;
+            var firstNonSlashEnd = -1;
+            for(i = path.length - 1; i >= 0; --i){
+                var code = path.charCodeAt(i);
+                if (code === 47 /*/*/ ) // If we reached a path separator that was not part of a set of path
+                // separators at the end of the string, stop now
+                {
+                    if (!matchedSlash) {
+                        start = i + 1;
+                        break;
+                    }
+                } else {
+                    if (firstNonSlashEnd === -1) {
+                        // We saw the first non-path separator, remember this index in case
+                        // we need it if the extension ends up not matching
+                        matchedSlash = false;
+                        firstNonSlashEnd = i + 1;
+                    }
+                    if (extIdx >= 0) {
+                        // Try to match the explicit extension
+                        if (code === ext.charCodeAt(extIdx)) {
+                            if (--extIdx === -1) // We matched the extension, so mark this as the end of our path
+                            // component
+                            end = i;
+                        } else {
+                            // Extension does not match, so our result is the entire path
+                            // component
+                            extIdx = -1;
+                            end = firstNonSlashEnd;
+                        }
+                    }
+                }
+            }
+            if (start === end) end = firstNonSlashEnd;
+            else if (end === -1) end = path.length;
+            return path.slice(start, end);
+        } else {
+            for(i = path.length - 1; i >= 0; --i){
+                if (path.charCodeAt(i) === 47 /*/*/ ) // If we reached a path separator that was not part of a set of path
+                // separators at the end of the string, stop now
+                {
+                    if (!matchedSlash) {
+                        start = i + 1;
+                        break;
+                    }
+                } else if (end === -1) {
+                    // We saw the first non-path separator, mark this as the end of our
+                    // path component
+                    matchedSlash = false;
+                    end = i + 1;
+                }
+            }
+            if (end === -1) return "";
+            return path.slice(start, end);
+        }
+    },
+    extname: function extname(path) {
+        $c1b234cf9fbd8bad$var$assertPath(path);
+        var startDot = -1;
+        var startPart = 0;
+        var end = -1;
+        var matchedSlash = true;
+        // Track the state of characters (if any) we see before our first dot and
+        // after any path separator we find
+        var preDotState = 0;
+        for(var i = path.length - 1; i >= 0; --i){
+            var code = path.charCodeAt(i);
+            if (code === 47 /*/*/ ) {
+                // If we reached a path separator that was not part of a set of path
+                // separators at the end of the string, stop now
+                if (!matchedSlash) {
+                    startPart = i + 1;
+                    break;
+                }
+                continue;
+            }
+            if (end === -1) {
+                // We saw the first non-path separator, mark this as the end of our
+                // extension
+                matchedSlash = false;
+                end = i + 1;
+            }
+            if (code === 46 /*.*/ ) {
+                // If this is our first dot, mark it as the start of our extension
+                if (startDot === -1) startDot = i;
+                else if (preDotState !== 1) preDotState = 1;
+            } else if (startDot !== -1) // We saw a non-dot and non-path separator before our dot, so we should
+            // have a good chance at having a non-empty extension
+            preDotState = -1;
+        }
+        if (startDot === -1 || end === -1 || // We saw a non-dot character immediately before the dot
+        preDotState === 0 || // The (right-most) trimmed path component is exactly '..'
+        preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) return "";
+        return path.slice(startDot, end);
+    },
+    format: function format(pathObject) {
+        if (pathObject === null || typeof pathObject !== "object") throw new TypeError('The "pathObject" argument must be of type Object. Received type ' + typeof pathObject);
+        return $c1b234cf9fbd8bad$var$_format("/", pathObject);
+    },
+    parse: function parse(path) {
+        $c1b234cf9fbd8bad$var$assertPath(path);
+        var ret = {
+            root: "",
+            dir: "",
+            base: "",
+            ext: "",
+            name: ""
+        };
+        if (path.length === 0) return ret;
+        var code = path.charCodeAt(0);
+        var isAbsolute = code === 47 /*/*/ ;
+        var start;
+        if (isAbsolute) {
+            ret.root = "/";
+            start = 1;
+        } else start = 0;
+        var startDot = -1;
+        var startPart = 0;
+        var end = -1;
+        var matchedSlash = true;
+        var i = path.length - 1;
+        // Track the state of characters (if any) we see before our first dot and
+        // after any path separator we find
+        var preDotState = 0;
+        // Get non-dir info
+        for(; i >= start; --i){
+            code = path.charCodeAt(i);
+            if (code === 47 /*/*/ ) {
+                // If we reached a path separator that was not part of a set of path
+                // separators at the end of the string, stop now
+                if (!matchedSlash) {
+                    startPart = i + 1;
+                    break;
+                }
+                continue;
+            }
+            if (end === -1) {
+                // We saw the first non-path separator, mark this as the end of our
+                // extension
+                matchedSlash = false;
+                end = i + 1;
+            }
+            if (code === 46 /*.*/ ) {
+                // If this is our first dot, mark it as the start of our extension
+                if (startDot === -1) startDot = i;
+                else if (preDotState !== 1) preDotState = 1;
+            } else if (startDot !== -1) // We saw a non-dot and non-path separator before our dot, so we should
+            // have a good chance at having a non-empty extension
+            preDotState = -1;
+        }
+        if (startDot === -1 || end === -1 || // We saw a non-dot character immediately before the dot
+        preDotState === 0 || // The (right-most) trimmed path component is exactly '..'
+        preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) {
+            if (end !== -1) {
+                if (startPart === 0 && isAbsolute) ret.base = ret.name = path.slice(1, end);
+                else ret.base = ret.name = path.slice(startPart, end);
+            }
+        } else {
+            if (startPart === 0 && isAbsolute) {
+                ret.name = path.slice(1, startDot);
+                ret.base = path.slice(1, end);
+            } else {
+                ret.name = path.slice(startPart, startDot);
+                ret.base = path.slice(startPart, end);
+            }
+            ret.ext = path.slice(startDot, end);
+        }
+        if (startPart > 0) ret.dir = path.slice(0, startPart - 1);
+        else if (isAbsolute) ret.dir = "/";
+        return ret;
+    },
+    sep: "/",
+    delimiter: ":",
+    win32: null,
+    posix: null
+};
+$c1b234cf9fbd8bad$var$posix.posix = $c1b234cf9fbd8bad$var$posix;
+$c1b234cf9fbd8bad$exports = $c1b234cf9fbd8bad$var$posix;
+
+
+var $4689e476d2940772$exports = {};
+var $dc16d1b62e696a52$exports = {};
+"use strict";
+
+
+
+var $4e3aa413eb514583$exports = {};
+/*
 Developped by zakaria elaloui
 Github : https://github.com/zakarialaoui10
-*/function(e,t=1/0,r=".",n="_"){let i={},o=0;return!function e(s,l=[]){if(o===t){Object.assign(i,s);return}for(let t in s){let a=s[t],c=[...l,t];if("object"!=typeof a||Array.isArray(a)){let e=c.join(r).replace(RegExp(`\\${r}`,"g"),n);i[e]=a}else e(a,c);o++}}(e),i}}).mapfun,C=A.flat_obj,T={},_=(T={should_skip_file:function(e){let t=g.normalize(e);return!!(this?.options?.skip?.folder?.includes(g.basename(t))||this?.options?.skip?.file?.includes(g.basename(t))||this?.options?.skip?.extension?.includes(g.extname(t).slice(1)))},should_skip_folder:function(e){if("string"!=typeof e)return!1;let t=g.normalize(e);return!!this?.options?.skipFolder?.includes(g.basename(t))}}).should_skip_file,O=T.should_skip_folder,x={},E=(x={is_directory:function(e){return k.statSync(e).isDirectory()},add_to_tree:function(e,t){let r=e.split(g.sep),n=r.length-1;r.reduce((e,r,i)=>(e[r]||(e[r]=i===n?t:{}),e[r]),this.tree)}}).is_directory,S={sort_files:function(e,t=1){return e.sort((e,r)=>{let n=g.join(this.root,e),i=g.join(this.root,r),o=E(n),s=E(i);if(o&&!s)return -1;// Directories come before files
-// Files come after directories
-if(!o&&s)return 1;if(o&&s)return e.localeCompare(r);// Sort directories by name
-// If both are files, perform the sorting based on your criteria
-let l=k.statSync(n),a=k.statSync(i),c=g.extname(n).slice(1),u=g.extname(i).slice(1),f=k.readFileSync(n,"utf8").split("\n").length,h=k.readFileSync(i,"utf8").split("\n").length;// Customize sorting based on sortBy option (name, size, created, modified, extension, lines, path, etc.)
-switch(this.sortBy.toLowerCase()){case"name":return t*e.localeCompare(r);case"size":return t*(l.size-a.size);case"created":return t*(l.birthtime-a.birthtime);case"modified":return t*(l.mtime.getTime()-a.mtime.getTime());case"extension":return t*c.localeCompare(u);case"lines":return t*(f-h);case"path":return t*i.localeCompare(n);default:return 0}})}}.sort_files,z=x.is_directory,F=T.should_skip_file,L={filter_files:function(e){return e.filter(e=>{if(z(g.join(this.root,e)))return!0;// Skip directories
-let t=g.join(this.root,e),r=F.call(this,t);return!r})}}.filter_files,B=x.add_to_tree,R=function(e){let t=k.statSync(e),r={created:t.birthtime,modified:t.mtime,permissions:t.mode};return r};class I{constructor(e,t={},r={}){this.root=e,this.options=t,this.callbacks=r,this.tree={},this.sortBy=t.sortBy||"name",this.generate()}generate(){let e=k.statSync(this.root);if(!e.isDirectory())return null;let t=k.readdirSync(this.root),r=L.call(this,t),n=S.call(this,r);//this.tree=tree;
-return n.forEach(e=>{let t=g.join(this.root,e);if(O.call(this,e))return;let r=k.statSync(t);if(r.isDirectory()){let e=new I(t,this.options,this.callbacks);return Object.assign(this.tree,{[g.basename(t)]:e.tree}),this}let n=g.parse(e).name;!_.call(this,t)&&this.options?.fileContent&&this.addFileInfo(t,n)}),this.tree}addFileInfo(e,t){let r=k.readFileSync(e,"utf8"),n={},i={},o=g.basename(e),[s,l]=o.split("."),a=k.statSync(e).size,c=r.split("\n").length,u=R.call(this,e);this.options?.fileContent&&Object.assign(n,{content:r}),this.options?.fileExtension&&Object.assign(n,{extension:l}),this.options?.fileName&&Object.assign(n,{name:s}),Object.assign(i,{length:a}),Object.assign(i,{size:a/1024}),Object.assign(i,{lines:c}),Object.assign(n,{stats:i}),Object.assign(n,{metadata:u}),this?.callbacks?.map(t=>t(e,n)),B.call(this,t+"_"+l,n)}write(e,t){let r=JSON.stringify(this.tree,null,2),n=g.join(e,t);// Pretty-print the JSON
-return k.writeFileSync(n,r,"utf8"),console.log(`Tree written to ${n}`),this}flat(e=1,t="_"){return this.tree=C(this.tree,e,t),this}reduce(){return this}sort(){return this}filter(){return this}map(e,t={}){return this.tree=w(e,t,this.tree),this}}v=(e,t,r=[])=>new I(e,t,r);const M=g.join(n.cwd(),".","Articles"),W=g.join(n.cwd(),"Target");console.log({ROOT:M,TARGET:W});const D=v(M,{fileContent:!0,sortBy:"extension",skipFile:["ger.md"],skipFolder:["to be skipped"],skipExtension:["sd"]});console.log(D.tree),D.write(n.cwd(),"generated.json");
+*/ function $4e3aa413eb514583$var$flat_obj(obj, depth = Infinity, separator = ".", replacement = "_") {
+    const result = {};
+    let i = 0;
+    function recurse(current, path = []) {
+        if (i === depth) {
+            Object.assign(result, current);
+            return;
+        }
+        for(const key in current){
+            const value = current[key];
+            const newPath = [
+                ...path,
+                key
+            ];
+            if (typeof value === "object" && !Array.isArray(value)) recurse(value, newPath);
+            else {
+                const flatKey = newPath.join(separator).replace(new RegExp(`\\${separator}`, "g"), replacement);
+                result[flatKey] = value;
+            }
+            i++;
+        }
+    }
+    recurse(obj);
+    return result;
+}
+const $4e3aa413eb514583$var$mapfun = (fun, { skip: skip = [], key: key = false, value: value = true } = {}, ...X)=>{
+    const Y = X.map((x)=>{
+        if (typeof skip === "string" || [
+            null,
+            undefined
+        ].includes(skip)) skip = [
+            skip
+        ];
+        const skipPrimitives = [];
+        const skipObjects = [];
+        skip.forEach((element)=>typeof element === "object" && element !== null ? skipObjects.push(element) : skipPrimitives.push(element));
+        if (skipPrimitives.includes(typeof x) || skipPrimitives.includes(x)) return x;
+        if (skipObjects.some((n)=>x instanceof n)) return x;
+        if (x === null) return fun(null);
+        if ([
+            "number",
+            "string",
+            "boolean",
+            "bigint",
+            "undefined"
+        ].includes(typeof x)) return fun(x);
+        if (typeof x === "symbol") throw new Error("symbols are not supported yet !");
+        if (x instanceof Array) return x.map((n)=>$4e3aa413eb514583$var$mapfun(fun, {}, n));
+        if (ArrayBuffer.isView(x)) return Array.from(x).map((n)=>fun(n));
+        if (x instanceof Set) return new Set($4e3aa413eb514583$var$mapfun(fun, {}, ...[
+            ...x
+        ]));
+        if (x instanceof WeakSet) throw new Error("WeakSets not supported yet !");
+        if (x instanceof WeakMap) throw new Error("WeakMaps not supported yet !");
+        if (x instanceof Map) return new Map([
+            ...x
+        ].map((n)=>{
+            return [
+                key ? $4e3aa413eb514583$var$mapfun(fun, {}, n[0]) : n[0],
+                value ? $4e3aa413eb514583$var$mapfun(fun, {}, n[1]) : n[1]
+            ];
+        }));
+        if (x instanceof Object) return Object.fromEntries(Object.entries(x).map(([KEY, VALUE])=>[
+                key ? $4e3aa413eb514583$var$mapfun(fun, {}, KEY) : KEY,
+                value ? $4e3aa413eb514583$var$mapfun(fun, {}, VALUE) : VALUE
+            ]));
+        else throw new Error("Uncategorised data");
+    });
+    return Y.length === 1 ? Y[0] : Y;
+};
+$4e3aa413eb514583$exports = {
+    mapfun: $4e3aa413eb514583$var$mapfun,
+    flat_obj: $4e3aa413eb514583$var$flat_obj
+};
+
+
+var $4689e476d2940772$require$mapfun = $4e3aa413eb514583$exports.mapfun;
+var $4689e476d2940772$require$flat_obj = $4e3aa413eb514583$exports.flat_obj;
+var $11c37dfd1d22855c$exports = {};
+
+function $11c37dfd1d22855c$var$should_skip_file(filePath) {
+    const normalizedPath = $c1b234cf9fbd8bad$exports.normalize(filePath);
+    if (this?.options?.skip?.folder?.includes($c1b234cf9fbd8bad$exports.basename(normalizedPath)) || this?.options?.skip?.file?.includes($c1b234cf9fbd8bad$exports.basename(normalizedPath)) || this?.options?.skip?.extension?.includes($c1b234cf9fbd8bad$exports.extname(normalizedPath).slice(1))) return true;
+    return false;
+}
+function $11c37dfd1d22855c$var$should_skip_folder(filePath) {
+    if (typeof filePath !== "string") return false;
+    const normalizedPath = $c1b234cf9fbd8bad$exports.normalize(filePath);
+    if (this?.options?.skipFolder?.includes($c1b234cf9fbd8bad$exports.basename(normalizedPath))) return true;
+    return false;
+}
+$11c37dfd1d22855c$exports = {
+    should_skip_file: $11c37dfd1d22855c$var$should_skip_file,
+    should_skip_folder: $11c37dfd1d22855c$var$should_skip_folder
+};
+
+
+var $4689e476d2940772$require$should_skip_file = $11c37dfd1d22855c$exports.should_skip_file;
+var $4689e476d2940772$require$should_skip_folder = $11c37dfd1d22855c$exports.should_skip_folder;
+var $3c7e371106a14038$exports = {};
+
+
+var $3be09a6c38638de4$exports = {};
+
+
+function $3be09a6c38638de4$var$is_directory(filePath) {
+    return $dc16d1b62e696a52$exports.statSync(filePath).isDirectory();
+}
+function $3be09a6c38638de4$var$add_to_tree(key, value) {
+    const keys = key.split($c1b234cf9fbd8bad$exports.sep);
+    const lastKeyIndex = keys.length - 1;
+    keys.reduce((subtree, currentKey, index)=>{
+        if (!subtree[currentKey]) subtree[currentKey] = index === lastKeyIndex ? value : {};
+        return subtree[currentKey];
+    }, this.tree);
+}
+$3be09a6c38638de4$exports = {
+    is_directory: $3be09a6c38638de4$var$is_directory,
+    add_to_tree: $3be09a6c38638de4$var$add_to_tree
+};
+
+
+var $3c7e371106a14038$require$is_directory = $3be09a6c38638de4$exports.is_directory;
+function $3c7e371106a14038$var$sort_files(files, order = 1) {
+    return files.sort((a, b)=>{
+        const filePathA = $c1b234cf9fbd8bad$exports.join(this.root, a);
+        const filePathB = $c1b234cf9fbd8bad$exports.join(this.root, b);
+        // Check if either of the files is a directory and handle accordingly
+        const isDirectoryA = $3c7e371106a14038$require$is_directory(filePathA);
+        const isDirectoryB = $3c7e371106a14038$require$is_directory(filePathB);
+        if (isDirectoryA && !isDirectoryB) return -1; // Directories come before files
+        else if (!isDirectoryA && isDirectoryB) return 1; // Files come after directories
+        if (isDirectoryA && isDirectoryB) return a.localeCompare(b); // Sort directories by name
+        // If both are files, perform the sorting based on your criteria
+        const statsA = $dc16d1b62e696a52$exports.statSync(filePathA);
+        const statsB = $dc16d1b62e696a52$exports.statSync(filePathB);
+        const extensionA = $c1b234cf9fbd8bad$exports.extname(filePathA).slice(1);
+        const extensionB = $c1b234cf9fbd8bad$exports.extname(filePathB).slice(1);
+        const linesA = $dc16d1b62e696a52$exports.readFileSync(filePathA, "utf8").split("\n").length;
+        const linesB = $dc16d1b62e696a52$exports.readFileSync(filePathB, "utf8").split("\n").length;
+        // Customize sorting based on sortBy option (name, size, created, modified, extension, lines, path, etc.)
+        switch(this.sortBy.toLowerCase()){
+            case "name":
+                return order * a.localeCompare(b);
+            case "size":
+                return order * (statsA.size - statsB.size);
+            case "created":
+                return order * (statsA.birthtime - statsB.birthtime);
+            case "modified":
+                return order * (statsA.mtime.getTime() - statsB.mtime.getTime());
+            case "extension":
+                return order * extensionA.localeCompare(extensionB);
+            case "lines":
+                return order * (linesA - linesB);
+            case "path":
+                return order * filePathB.localeCompare(filePathA);
+            default:
+                return 0;
+        }
+    });
+}
+$3c7e371106a14038$exports = {
+    sort_files: $3c7e371106a14038$var$sort_files
+};
+
+
+var $4689e476d2940772$require$sort_files = $3c7e371106a14038$exports.sort_files;
+var $09c9632d2fd03952$exports = {};
+
+
+var $09c9632d2fd03952$require$is_directory = $3be09a6c38638de4$exports.is_directory;
+
+var $09c9632d2fd03952$require$should_skip_file = $11c37dfd1d22855c$exports.should_skip_file;
+function $09c9632d2fd03952$var$filter_files(files) {
+    return files.filter((file)=>{
+        if ($09c9632d2fd03952$require$is_directory($c1b234cf9fbd8bad$exports.join(this.root, file))) return true; // Skip directories
+        const filePath = $c1b234cf9fbd8bad$exports.join(this.root, file);
+        const shouldSkip = $09c9632d2fd03952$require$should_skip_file.call(this, filePath);
+        return !shouldSkip;
+    });
+}
+$09c9632d2fd03952$exports = {
+    filter_files: $09c9632d2fd03952$var$filter_files
+};
+
+
+var $4689e476d2940772$require$filter_files = $09c9632d2fd03952$exports.filter_files;
+
+var $4689e476d2940772$require$add_to_tree = $3be09a6c38638de4$exports.add_to_tree;
+var $9ebef2c1b6a31312$exports = {};
+
+function $9ebef2c1b6a31312$var$file_metadata(filePath) {
+    const stats = $dc16d1b62e696a52$exports.statSync(filePath);
+    const metadata = {
+        created: stats.birthtime,
+        modified: stats.mtime,
+        permissions: stats.mode
+    };
+    return metadata;
+}
+$9ebef2c1b6a31312$exports = {
+    file_metadata: $9ebef2c1b6a31312$var$file_metadata
+};
+
+
+var $4689e476d2940772$require$file_metadata = $9ebef2c1b6a31312$exports.file_metadata;
+class $4689e476d2940772$var$Dir2Tree {
+    constructor(root, options = {}, callbacks = {}){
+        this.root = root;
+        this.options = options;
+        this.callbacks = callbacks;
+        this.tree = {};
+        this.sortBy = options.sortBy || "name";
+        this.generate();
+    }
+    generate() {
+        const stats = $dc16d1b62e696a52$exports.statSync(this.root);
+        if (!stats.isDirectory()) return null;
+        const files = $dc16d1b62e696a52$exports.readdirSync(this.root);
+        const FILTRED_FILES = $4689e476d2940772$require$filter_files.call(this, files);
+        const SORTED_FILES = $4689e476d2940772$require$sort_files.call(this, FILTRED_FILES);
+        SORTED_FILES.forEach((file)=>{
+            const filePath = $c1b234cf9fbd8bad$exports.join(this.root, file);
+            if ($4689e476d2940772$require$should_skip_folder.call(this, file)) return;
+            const fileStats = $dc16d1b62e696a52$exports.statSync(filePath);
+            if (fileStats.isDirectory()) {
+                const subDirectory = new $4689e476d2940772$var$Dir2Tree(filePath, this.options, this.callbacks);
+                Object.assign(this.tree, {
+                    [$c1b234cf9fbd8bad$exports.basename(filePath)]: subDirectory.tree
+                });
+                return this;
+            }
+            const fileName = $c1b234cf9fbd8bad$exports.parse(file).name;
+            if ($4689e476d2940772$require$should_skip_file.call(this, filePath)) return;
+            if (this.options?.fileContent) this.addFileInfo(filePath, fileName);
+        });
+        //this.tree=tree;
+        return this.tree;
+    }
+    addFileInfo(filePath, fileName) {
+        const content = $dc16d1b62e696a52$exports.readFileSync(filePath, "utf8");
+        const fileInfo = {};
+        const stats = {};
+        const fullName = $c1b234cf9fbd8bad$exports.basename(filePath);
+        const [name, extension] = fullName.split(".");
+        const length = $dc16d1b62e696a52$exports.statSync(filePath).size;
+        const lines = content.split("\n").length;
+        const metadata = $4689e476d2940772$require$file_metadata.call(this, filePath);
+        if (this.options?.fileContent) Object.assign(fileInfo, {
+            content: content
+        });
+        if (this.options?.fileExtension) Object.assign(fileInfo, {
+            extension: extension
+        });
+        if (this.options?.fileName) Object.assign(fileInfo, {
+            name: name
+        });
+        Object.assign(stats, {
+            length: length
+        });
+        Object.assign(stats, {
+            size: length / 1024
+        });
+        Object.assign(stats, {
+            lines: lines
+        });
+        Object.assign(fileInfo, {
+            stats: stats
+        });
+        Object.assign(fileInfo, {
+            metadata: metadata
+        });
+        this?.callbacks?.map((n)=>n(filePath, fileInfo));
+        $4689e476d2940772$require$add_to_tree.call(this, fileName + "_" + extension, fileInfo);
+    }
+    write(Target, filename) {
+        const jsonTree = JSON.stringify(this.tree, null, 2); // Pretty-print the JSON
+        const filePath = $c1b234cf9fbd8bad$exports.join(Target, filename); // Construct the file path
+        $dc16d1b62e696a52$exports.writeFileSync(filePath, jsonTree, "utf8");
+        console.log(`Tree written to ${filePath}`);
+        return this;
+    }
+    flat(depth = 1, separator = "_") {
+        this.tree = $4689e476d2940772$require$flat_obj(this.tree, depth, separator);
+        return this;
+    }
+    reduce() {
+        return this;
+    }
+    sort() {
+        return this;
+    }
+    filter() {
+        return this;
+    }
+    map(callback, options = {}) {
+        this.tree = $4689e476d2940772$require$mapfun(callback, options, this.tree);
+        return this;
+    }
+}
+const $4689e476d2940772$var$dir2tree = (root, options, callbacks = [])=>new $4689e476d2940772$var$Dir2Tree(root, options, callbacks);
+$4689e476d2940772$exports = $4689e476d2940772$var$dir2tree;
+
+
+const $85a97f174adb3515$var$ROOT = $c1b234cf9fbd8bad$exports.join($7d1341245baded19$exports.cwd(), ".", "Articles");
+const $85a97f174adb3515$var$TARGET = $c1b234cf9fbd8bad$exports.join($7d1341245baded19$exports.cwd(), "Target");
+console.log({
+    ROOT: $85a97f174adb3515$var$ROOT,
+    TARGET: $85a97f174adb3515$var$TARGET
+});
+const $85a97f174adb3515$var$MyTree = $4689e476d2940772$exports($85a97f174adb3515$var$ROOT, {
+    fileContent: true,
+    sortBy: "extension",
+    skipFile: [
+        "ger.md"
+    ],
+    skipFolder: [
+        "to be skipped"
+    ],
+    skipExtension: [
+        "sd"
+    ]
+});
+console.log($85a97f174adb3515$var$MyTree.tree);
+$85a97f174adb3515$var$MyTree.write($7d1341245baded19$exports.cwd(), "generated.json");
+
+
