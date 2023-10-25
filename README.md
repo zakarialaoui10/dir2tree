@@ -46,6 +46,8 @@ sequenceDiagram
     Your repository ->> dir2tree: ...
     dir2tree-->>Your repository:...
 ```
+Create a workflow file like the one below.
+.github/workflow/dir2tree.yml
 ```yml
 name: Generate Directory Tree using zakarialaoui10/dir2tree
 on:
