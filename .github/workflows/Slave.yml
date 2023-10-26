@@ -36,7 +36,7 @@ jobs:
           CUSTOM_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
           CONFIG: >
            {
-            "key1": "value1",
-            "key2": "value2"
+            "Root": "./",
+            "Target": "./"
            }
         
