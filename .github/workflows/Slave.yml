@@ -15,7 +15,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
-
+        env:
+          CUSTOM_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
+          CONFIG_ROOT : "uu"
+      - name: Log CONFIG
+        run: |
+           echo "CONFIG: $CONFIG_ROOT"
       - name: Set up Node.js
         uses: actions/setup-node@v2.1.5
         with:
@@ -29,10 +34,6 @@ jobs:
           git add -A .
           git commit -m "generated"
           git push
-        env:
-          CUSTOM_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
-          CONFIG_ROOT : "./"
-      - name: Log CONFIG
-        run: |
-           echo "CONFIG: $CONFIG_ROOT"
+          
+      
         
