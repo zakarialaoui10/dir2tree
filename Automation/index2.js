@@ -319,6 +319,7 @@ const dir2tree=$2776a60caf88deef$var$dir2tree;
 const ROOT = path.join(process.cwd(),'.');
 const TARGET = path.join(process.cwd(),".");
 console.log({ROOT,TARGET})
+console.log(process.CONFIG)
 const MyTree = dir2tree(ROOT,{
   fileContent:true,
   sortBy:"extension",
