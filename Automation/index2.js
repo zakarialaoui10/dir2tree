@@ -324,7 +324,7 @@ const MyTree = dir2tree(ROOT,{
   sortBy:"extension",
   skipFile:["ger.md"],
   skipFolder:["to be skipped"],
-  skipExtension:["sd"],
+  skipExtension:["json"],
 });
 
 console.log(MyTree.tree)
