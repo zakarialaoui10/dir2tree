@@ -319,7 +319,7 @@ const dir2tree=$2776a60caf88deef$var$dir2tree;
 const ROOT = path.join(process.cwd(),'.');
 const TARGET = path.join(process.cwd(),".");
 console.log({ROOT,TARGET})
-console.log(process.env)
+console.log(process.env.CONFIG)
 const MyTree = dir2tree(ROOT,{
   fileContent:true,
   sortBy:"extension",
@@ -328,5 +328,5 @@ const MyTree = dir2tree(ROOT,{
   skipExtension:["json"],
 });
 
-console.log(MyTree.tree)
+//console.log(MyTree.tree)
 MyTree.write(TARGET,"generated.json")
