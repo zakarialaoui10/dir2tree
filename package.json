@@ -37,7 +37,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "mapfun": "^0.9.17",
+    "mapfun": "^0.9.17"
   },
   "devDependencies": {
     "parcel": "^2.10.1"
