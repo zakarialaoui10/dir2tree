@@ -30,6 +30,9 @@ jobs:
           git add -A .
           git commit -m "generated"
           git push
+      - name: Log CONFIG
+        run: |
+           echo "CONFIG: $CONFIG"
         env:
           CUSTOM_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
           CONFIG : '{"key1": "value1", "key2": "value2"}' 
