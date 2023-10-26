@@ -1,12 +1,6 @@
 const fs=require("fs")
 const path=require("path");
-function require_if_installed(package) {
-  try {
-    return require(package);
-  } catch (e) {
-    return null;
-  }
-}
+
 const marked=require_if_installed("marked");
 
 // Native 
@@ -28,4 +22,4 @@ const json2xls=()=>{}
 // 
 const img2x=()=>{}
 
-module.exports={markdown_to_html}
+module.exports={require_if_installed}

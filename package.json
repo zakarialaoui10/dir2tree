@@ -1,7 +1,7 @@
 {
   "name": "dir2tree",
   "version": "0.2.0",
-  "source":"src/index.js",
+  "source": "src/index.js",
   "main": "dist/index_bundle.js",
   "targets": {
     "main": {
@@ -38,6 +38,7 @@
   "license": "MIT",
   "dependencies": {
     "mapfun": "^0.9.17",
+    "marked": "^9.1.2",
     "parcel": "^2.10.1"
   }
 }
