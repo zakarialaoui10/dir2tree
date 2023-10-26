@@ -5,4 +5,5 @@ _test_fs.js
 Examples/
 .github/
 Automation/
+addons/
 *.json
