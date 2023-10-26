@@ -41,11 +41,6 @@ MyTree.write(Target,"generated_file.json")
 - **`.write(Target, filename)`**
 - **`.flat(depth, separator)`**
 ### Use It in your Github Repository
-```mermaid
-sequenceDiagram
-    Your repository ->> dir2tree: ...
-    dir2tree-->>Your repository:...
-```
 Create a workflow file like the one below.
 .github/workflow/dir2tree.yml
 ```yml
