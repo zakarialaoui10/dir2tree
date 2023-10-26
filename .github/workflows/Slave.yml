@@ -1,6 +1,6 @@
 name: Node.js App CI
   
-on:  
+on:   
   push: 
     branches:
       - main
