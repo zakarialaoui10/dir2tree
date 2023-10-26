@@ -1,13 +1,7 @@
 {
   "name": "dir2tree",
-  "version": "0.2.1",
-  "source": "src/index.js",
-  "main": "dist/index_bundle.js",
-  "targets": {
-    "main": {
-      "includeNodeModules": true
-    }
-  },
+  "version": "0.2.2",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node Automation/index.js",
