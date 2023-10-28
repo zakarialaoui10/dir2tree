@@ -14,5 +14,3 @@ const MyTree = dir2tree(ROOT,{
 
 console.log(MyTree.tree)
 MyTree.write(TARGET,"generated.json")
-import dir2tree from "dir2tree";
-console.log(dir2tree)
