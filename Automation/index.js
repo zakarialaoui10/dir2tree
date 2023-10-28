@@ -1,6 +1,6 @@
 import fs from "fs"
 import path from "path" 
-import dir2tree from "./dist/index.mjs"
+import dir2tree from "../dist/index.mjs"
 const ROOT = path.join(process.cwd(),'.');
 const TARGET = path.join(process.cwd(),".");
 const MyTree = dir2tree(ROOT,{
