@@ -2,7 +2,6 @@ action.yml
 test.js
 .gitignore
 rolllup.config.js
-src/
 Examples/
 .github/
 Automation/
