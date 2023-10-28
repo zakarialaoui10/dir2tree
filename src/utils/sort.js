@@ -1,6 +1,6 @@
-const path=require("path");
-const fs=require("fs")
-const {is_directory}=require("./general.js");
+import fs from 'fs';
+import path from 'path';
+import {is_directory} from "./general.js";
 function sort_files(files, order = 1) {
     return files.sort((a, b) => {
       const filePathA = path.join(this.root, a);
@@ -50,4 +50,4 @@ function sort_files(files, order = 1) {
     });
   }
 
-module.exports={sort_files}
+export{sort_files}

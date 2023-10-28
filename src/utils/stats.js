@@ -1,4 +1,4 @@
-const fs=require("fs");
+import fs from 'fs';
 function file_metadata(filePath) {
     const stats = fs.statSync(filePath);
     const metadata = {
@@ -8,4 +8,4 @@ function file_metadata(filePath) {
     };
     return metadata;
   }
-module.exports={file_metadata}
+export{file_metadata}

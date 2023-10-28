@@ -1,6 +1,6 @@
-const path=require("path");
-const {is_directory}=require("./general.js");
-const {should_skip_file}=require("./skip.js")
+import path from 'path';
+import {is_directory} from "./general.js";
+import {should_skip_file} from "./skip.js";
 function filter_files(files) {
     return files.filter((file) => {
       if (is_directory(path.join(this.root, file))) {
@@ -11,4 +11,4 @@ function filter_files(files) {
       return !shouldSkip;
     });
   }
-module.exports={filter_files}
+export{filter_files}

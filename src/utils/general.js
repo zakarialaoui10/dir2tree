@@ -1,5 +1,5 @@
-const fs=require("fs");
-const path=require("path")
+import fs from 'fs';
+import path from 'path';
 function is_directory(filePath) {
     return fs.statSync(filePath).isDirectory();
   }
@@ -13,4 +13,4 @@ function add_to_tree(key, value) {
     return subtree[currentKey];
   }, this.tree);
 }
-module.exports={is_directory,add_to_tree}
+export{is_directory,add_to_tree}

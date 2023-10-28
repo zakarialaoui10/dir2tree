@@ -1,39 +1,40 @@
 {
-  "name": "dir2tree",
-  "version": "0.2.2",
-  "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node Automation/index.js",
-    "build": "parcel build"
-  },
-  "author": {
-    "name": "zakaria elalaoui",
-    "url": "https://github.com/zakarialaoui10"
-  },
-  "description": "a user-friendly Node.js tool for creating organized directory trees from a root directory. It offers customization options for tailored tree generation and content analysis",
-  "keywords": [
-    "directory",
-    "tree",
-    "structure",
-    "filesystem",
-    "file management",
-    "directory tree",
-    "json"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zakarialaoui10/dir2tree.git"
-  },
-  "homepage": "https://github.com/zakarialaoui10/dir2tree",
-  "bugs": {
-    "url": "https://github.com/zakarialaoui10/dir2tree/issues"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "mapfun": "^0.9.17"
-  },
-  "devDependencies": {
-    "parcel": "^2.10.1"
-  }
+    "name": "dir2tree",
+    "version": "0.2.2",
+    "source": "src/index.js",
+    "main": "dist/index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node Automation/index.js",
+        "build": "rollup -c rollup.config.js"
+    },
+    "author": "zakaria elalaoui (https://github.com/zakarialaoui10)",
+    "description": "a user-friendly Node.js tool for creating organized directory trees from a root directory. It offers customization options for tailored tree generation and content analysis",
+    "keywords": [
+        "directory",
+        "tree",
+        "structure",
+        "filesystem",
+        "file management",
+        "directory tree",
+        "json"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zakarialaoui10/dir2tree.git"
+    },
+    "homepage": "https://github.com/zakarialaoui10/dir2tree",
+    "bugs": {
+        "url": "https://github.com/zakarialaoui10/dir2tree/issues"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "mapfun": "^0.9.17"
+    },
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^25.0.7",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "rollup": "^4.1.5"
+    }
 }

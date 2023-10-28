@@ -1,4 +1,4 @@
-const path = require("path");
+import path from 'path';
 function should_skip_file(filePath) {
     const normalizedPath = path.normalize(filePath);
     if (
@@ -17,4 +17,4 @@ function should_skip_folder(filePath) {
     return true;
   return false;
   }
-module.exports={should_skip_file,should_skip_folder}
+export{should_skip_file,should_skip_folder}

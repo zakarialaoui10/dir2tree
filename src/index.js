@@ -1,11 +1,12 @@
-const fs = require("fs");
-const path = require("path");
-const {mapfun,flat_obj}=require("mapfun")
-const {should_skip_file,should_skip_folder}=require("./utils/skip.js");
-const {sort_files}=require("./utils/sort.js");
-const {filter_files}=require("./utils/filter.js");
-const {add_to_tree}=require("./utils/general.js");
-const {file_metadata}=require("./utils/stats.js");
+import fs from 'fs';
+import path from 'path';
+import { mapfun, flat_obj } from 'mapfun';
+import { should_skip_file, should_skip_folder } from './utils/skip.js';
+import { sort_files } from './utils/sort.js';
+import { filter_files } from './utils/filter.js';
+import { add_to_tree } from './utils/general.js';
+import { file_metadata } from './utils/stats.js';
+
 
 class Dir2Tree {
   constructor(root, options = {}, callbacks = {}) {
@@ -93,4 +94,4 @@ class Dir2Tree {
   }
 }
 const dir2tree = (root, options, callbacks=[]) => new Dir2Tree(root, options, callbacks);
-module.exports = dir2tree;
+export default dir2tree;
