@@ -16,7 +16,7 @@ import dir2tree from dir2tree
 ## Syntaxe
 ### Initialise
 ```js
-const MyTree=dire2tree(ROOT,OPTIONS,CALLBACKS)
+const MyTree=dir2tree(ROOT,OPTIONS,CALLBACKS)
 MyTree.write(Target,"generated_file.json")
 ```
 #### Arguments
