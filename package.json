@@ -1,8 +1,8 @@
 {
     "name": "dir2tree",
-    "version": "0.2.2",
+    "version": "0.3.0",
     "source": "src/index.js",
-    "main": "dist/index.js",
+    "main": "dist/index.mjs",
     "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",

@@ -1,21 +1,22 @@
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import { mapfun } from 'mapfun';
-import fs from 'fs';
-import path from 'path';
 
 export default {
   input: 'src/index.js',
-  external: [mapfun,fs,path],
-  output: {
-    file: 'dist/bundle.js',
-    format: 'iife',
+  externals: [mapfun],
+  output: [{
+    file: 'dist/index.cjs',
+    format: 'cjs',
     name: 'dir2tree',
-  },
+  },{
+    file: 'dist/index.mjs',
+    format: 'es',
+    name: 'dir2tree',
+  }
+],
   globals: {
     mapfun: 'mapfun',
-    fs: '_fs',
-    path: '_path',
   },
   plugins: [resolve(), commonjs()],
 };
