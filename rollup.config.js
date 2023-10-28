@@ -8,11 +8,9 @@ export default {
   output: [{
     file: 'dist/index.cjs',
     format: 'cjs',
-    name: 'dir2tree',
   },{
     file: 'dist/index.mjs',
     format: 'es',
-    name: 'dir2tree',
   }
 ],
   globals: {

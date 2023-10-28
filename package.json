@@ -2,7 +2,12 @@
     "name": "dir2tree",
     "version": "0.3.0",
     "source": "src/index.js",
-    "main": "dist/index.mjs",
+    "exports": {
+        ".": {
+          "import": "./dist/index.mjs",
+          "require": "./dist/index.cjs"
+        }
+      },
     "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",

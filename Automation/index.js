@@ -1,4 +1,4 @@
-const fs=require("fs");
+/*const fs=require("fs");
 const path=require("path");
 const dir2tree=require("dir2tree");
 const {markdown_to_html}=require("../addons/index.js")
@@ -14,4 +14,6 @@ const MyTree = dir2tree(ROOT,{
 
 console.log(MyTree.tree)
 MyTree.write(TARGET,"generated.json")
-
+*/
+import dir2tree from "dir2tree";
+console.log(dir2tree)
