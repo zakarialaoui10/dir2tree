@@ -1,6 +1,6 @@
 {
     "name": "dir2tree",
-    "version": "0.3.0",
+    "version": "0.3.2",
     "source": "src/index.js",
     "exports": {
         ".": {
