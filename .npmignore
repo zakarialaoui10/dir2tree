@@ -1,7 +1,8 @@
 action.yml
 test.js
 .gitignore
-_test_fs.js
+rolllup.config.js
+src/
 Examples/
 .github/
 Automation/
