@@ -13,12 +13,12 @@ class Dir2Tree {
     this.root = root;
     this.options = options;
     this.callbacks = callbacks;
-    this.tree = {};
+    this._tree = {};
     this.sortBy = options.sortBy || "name";
     this.generate();
   }
-  get tree2(){
-    return clean_object(this.tree,"content")
+  get tree(){
+    return clean_object(this._tree,"content")
   }
   generate() {
     const stats = fs.statSync(this.root);
@@ -37,7 +37,7 @@ class Dir2Tree {
           this.options,
           this.callbacks
         );
-        Object.assign(this.tree,{[path.basename(filePath)]:subDirectory.tree})
+        Object.assign(this._tree,{[path.basename(filePath)]:subDirectory.tree})
         return this
       }
       const fileName = path.parse(file).name;
@@ -47,8 +47,8 @@ class Dir2Tree {
         }
       
     });
-    //this.tree=tree;
-    return this.tree;
+    //this._tree=tree;
+    return this._tree;
   }
   addFileInfo(filePath, fileName) {
     const content = fs.readFileSync(filePath, "utf8");
@@ -72,14 +72,14 @@ class Dir2Tree {
   }
   
   write(Target, filename) {
-    const jsonTree = JSON.stringify(this.tree, null, 2); // Pretty-print the JSON
+    const jsonTree = JSON.stringify(this._tree, null, 2); // Pretty-print the JSON
     const filePath = path.join(Target, filename); // Construct the file path
     fs.writeFileSync(filePath, jsonTree, 'utf8');
     console.log(`Tree written to ${filePath}`);
     return this;
   }
   flat(depth=1,separator="_"){
-    this.tree=flat_obj(this.tree,depth,separator);
+    this._tree=flat_obj(this._tree,depth,separator);
     return this;
   }
   reduce(){
@@ -92,7 +92,7 @@ class Dir2Tree {
     return this;
   }
   map(callback,options={}){
-    this.tree=mapfun(callback,options,this.tree);
+    this._tree=mapfun(callback,options,this._tree);
     return this;
   }
 }

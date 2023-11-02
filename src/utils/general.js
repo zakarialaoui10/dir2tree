@@ -11,6 +11,6 @@ function add_to_tree(key, value) {
       subtree[currentKey] = index === lastKeyIndex ? value : {};
     }
     return subtree[currentKey];
-  }, this.tree);
+  }, this._tree);
 }
 export{is_directory,add_to_tree}
