@@ -4,7 +4,7 @@ import dir2tree from "../dist/index.mjs"
 const ROOT = path.join(process.cwd(),'.');
 const TARGET = path.join(process.cwd(),".");
 const MyTree = dir2tree(ROOT,{
-  fileContent:true,
+  fileContent:false,
   sortBy:"extension",
   skipFile:["ger.md"],
   skipFolder:[".git","node_modules"],

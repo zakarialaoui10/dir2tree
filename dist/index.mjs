@@ -185,7 +185,7 @@ class Dir2Tree {
     this.generate();
   }
   get tree(){
-    return this.#tree;
+    return this?.fileContent?this.#tree:JavascriptExports.mapfun(obj=>delete obj.fileContent,{},this.#tree);
   }
   generate() {
     const stats = fs.statSync(this.root);
@@ -209,9 +209,9 @@ class Dir2Tree {
       }
       const fileName = path.parse(file).name;
       if (should_skip_file.call(this, filePath)) return;
-        if (this.options?.fileContent) {
+        //if (this.options?.fileContent) {
           this.addFileInfo(filePath, fileName);
-        }
+        //}
       
     });
     //this.#tree=tree;
@@ -226,7 +226,7 @@ class Dir2Tree {
     const length = fs.statSync(filePath).size;
     const lines = content.split("\n").length;
     const metadata = file_metadata.call(this, filePath);
-    if (this.options?.fileContent) Object.assign(fileInfo, { content });
+    //if (this.options?.fileContent) Object.assign(fileInfo, { content });
     if (this.options?.fileExtension) Object.assign(fileInfo, { extension });
     if (this.options?.fileName) Object.assign(fileInfo, { name });
     Object.assign(stats, { length });
