@@ -6,20 +6,19 @@ import { sort_files } from './utils/sort.js';
 import { filter_files } from './utils/filter.js';
 import { add_to_tree } from './utils/general.js';
 import { file_metadata } from './utils/stats.js';
-
+import { clean_object } from './utils/object.js';
 
 class Dir2Tree {
-  #tree=null
   constructor(root, options = {}, callbacks = {}) {
     this.root = root;
     this.options = options;
     this.callbacks = callbacks;
-    this.#tree = {};
+    this.tree = {};
     this.sortBy = options.sortBy || "name";
     this.generate();
   }
-  get tree(){
-    return this?.fileContent?this.#tree:mapfun(obj=>delete obj.fileContent,{},this.#tree);
+  get tree2(){
+    return clean_object(this.tree,"content")
   }
   generate() {
     const stats = fs.statSync(this.root);
@@ -38,18 +37,18 @@ class Dir2Tree {
           this.options,
           this.callbacks
         );
-        Object.assign(this.#tree,{[path.basename(filePath)]:subDirectory.tree})
+        Object.assign(this.tree,{[path.basename(filePath)]:subDirectory.tree})
         return this
       }
       const fileName = path.parse(file).name;
       if (should_skip_file.call(this, filePath)) return;
-        //if (this.options?.fileContent) {
+        if (this.options?.fileContent) {
           this.addFileInfo(filePath, fileName);
-        //}
+        }
       
     });
-    //this.#tree=tree;
-    return this.#tree;
+    //this.tree=tree;
+    return this.tree;
   }
   addFileInfo(filePath, fileName) {
     const content = fs.readFileSync(filePath, "utf8");
@@ -60,7 +59,7 @@ class Dir2Tree {
     const length = fs.statSync(filePath).size;
     const lines = content.split("\n").length;
     const metadata = file_metadata.call(this, filePath);
-    //if (this.options?.fileContent) Object.assign(fileInfo, { content });
+    if (this.options?.fileContent) Object.assign(fileInfo, { content });
     if (this.options?.fileExtension) Object.assign(fileInfo, { extension });
     if (this.options?.fileName) Object.assign(fileInfo, { name });
     Object.assign(stats, { length });
@@ -73,14 +72,14 @@ class Dir2Tree {
   }
   
   write(Target, filename) {
-    const jsonTree = JSON.stringify(this.#tree, null, 2); // Pretty-print the JSON
+    const jsonTree = JSON.stringify(this.tree, null, 2); // Pretty-print the JSON
     const filePath = path.join(Target, filename); // Construct the file path
     fs.writeFileSync(filePath, jsonTree, 'utf8');
     console.log(`Tree written to ${filePath}`);
     return this;
   }
   flat(depth=1,separator="_"){
-    this.#tree=flat_obj(this.#tree,depth,separator);
+    this.tree=flat_obj(this.tree,depth,separator);
     return this;
   }
   reduce(){
@@ -93,7 +92,7 @@ class Dir2Tree {
     return this;
   }
   map(callback,options={}){
-    this.#tree=mapfun(callback,options,this.#tree);
+    this.tree=mapfun(callback,options,this.tree);
     return this;
   }
 }

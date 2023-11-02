@@ -4,7 +4,6 @@ function file_metadata(filePath) {
     const metadata = {
       created: stats.birthtime,
       modified: stats.mtime,
-      permissions: stats.mode,
     };
     return metadata;
   }
