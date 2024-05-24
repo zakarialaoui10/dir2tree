@@ -1,7 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import { mapfun } from 'mapfun';
-// remove mapfun
+// remove mapfun 
 
 export default {
   input: 'src/index.js',
