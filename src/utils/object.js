@@ -11,8 +11,5 @@ function clean_object(obj, keyToRemove) {
       }
     }
     return result;
-  }
-  
-
-  
+  }  
 export {clean_object}

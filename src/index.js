@@ -18,7 +18,8 @@ class Dir2Tree {
     this.generate();
   }
   get tree(){
-    return clean_object(this._tree,"content")
+    return clean_object(this._tree,"metadata")
+    // return clean_object(this._tree)
   }
   generate() {
     const stats = fs.statSync(this.root);
@@ -47,7 +48,6 @@ class Dir2Tree {
         }
       
     });
-    //this._tree=tree;
     return this._tree;
   }
   addFileInfo(filePath, fileName) {
@@ -67,7 +67,9 @@ class Dir2Tree {
     Object.assign(stats, { lines });
     Object.assign(fileInfo, { stats });
     Object.assign(fileInfo, { metadata });
-    this?.callbacks?.map((n) => n(filePath, fileInfo));
+    
+    // this?.callbacks?.map((n) => n(filePath, fileInfo));
+    this?.callbacks?.map(callback => callback.call(this, filePath, fileInfo));
     add_to_tree.call(this,fileName+"_"+extension, fileInfo);
   }
   
@@ -79,7 +81,7 @@ class Dir2Tree {
     return this;
   }
   flat(depth=1,separator="_"){
-    this._tree=flat_obj(this._tree,depth,separator);
+    // this._tree=flat_obj(this._tree,depth,separator);
     return this;
   }
   reduce(){
@@ -92,9 +94,10 @@ class Dir2Tree {
     return this;
   }
   map(callback,options={}){
-    this._tree=mapfun(callback,options,this._tree);
+    // this._tree=mapfun(callback,options,this._tree);
     return this;
   }
 }
 const dir2tree = (root, options, callbacks=[]) => new Dir2Tree(root, options, callbacks);
+export * from "./callbacks/index.js"
 export default dir2tree;

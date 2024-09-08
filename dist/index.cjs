@@ -1,5 +1,7 @@
 'use strict';
 
+Object.defineProperty(exports, '__esModule', { value: true });
+
 var fs = require('fs');
 var path = require('path');
 
@@ -70,8 +72,6 @@ Github : https://github.com/zakarialaoui10
 	  module.exports = {mapfun,flat_obj} ;
 	} 
 } (Javascript));
-
-var JavascriptExports = Javascript.exports;
 
 function should_skip_file(filePath) {
     const normalizedPath = path.normalize(filePath);
@@ -190,6 +190,32 @@ function clean_object(obj, keyToRemove) {
     return result;
   }
 
+const getRelativePath = (baseDir, absolutePath) => {
+    baseDir = baseDir.replace(/\\/g, '/').replace(/\/$/, '');
+    absolutePath = absolutePath.replace(/\\/g, '/');  
+    if (absolutePath.startsWith(baseDir)) {
+      return absolutePath.substring(baseDir.length).replace(/^\/+/, '');
+    } else {
+      throw new Error(`The path does not start with the base directory.`);
+    }
+};
+
+  
+  // // Example usage
+  // const baseDir = 'C:/Users/zakar/OneDrive/Bureau/ALL-ZIKO-REPO/dir2tree/articles';
+  // const absolutePaths = [
+  //   'C:/Users/zakar/OneDrive/Bureau/ALL-ZIKO-REPO/dir2tree/articles/a/m.c',
+  //   'C:/Users/zakar/OneDrive/Bureau/ALL-ZIKO-REPO/dir2tree/articles/a/b.rs',
+  //   'C:/Users/zakar/OneDrive/Bureau/ALL-ZIKO-REPO/dir2tree/articles/a/m.c',
+  //   'C:/Users/zakar/OneDrive/Bureau/ALL-ZIKO-REPO/dir2tree/articles/a/b.rs'
+  // ];
+  
+  // // Convert to relative paths
+  // const relativePaths = absolutePaths.map(path => getRelativePath(baseDir, path));
+  
+  // // Print results
+  // relativePaths.forEach(relativePath => console.log(relativePath));
+
 class Dir2Tree {
   constructor(root, options = {}, callbacks = {}) {
     this.root = root;
@@ -200,7 +226,8 @@ class Dir2Tree {
     this.generate();
   }
   get tree(){
-    return clean_object(this._tree,"content")
+    return clean_object(this._tree,"metadata")
+    // return clean_object(this._tree)
   }
   generate() {
     const stats = fs.statSync(this.root);
@@ -229,7 +256,6 @@ class Dir2Tree {
         }
       
     });
-    //this._tree=tree;
     return this._tree;
   }
   addFileInfo(filePath, fileName) {
@@ -249,7 +275,9 @@ class Dir2Tree {
     Object.assign(stats, { lines });
     Object.assign(fileInfo, { stats });
     Object.assign(fileInfo, { metadata });
-    this?.callbacks?.map((n) => n(filePath, fileInfo));
+    
+    // this?.callbacks?.map((n) => n(filePath, fileInfo));
+    this?.callbacks?.map(callback => callback.call(this, filePath, fileInfo));
     add_to_tree.call(this,fileName+"_"+extension, fileInfo);
   }
   
@@ -261,7 +289,7 @@ class Dir2Tree {
     return this;
   }
   flat(depth=1,separator="_"){
-    this._tree=JavascriptExports.flat_obj(this._tree,depth,separator);
+    // this._tree=flat_obj(this._tree,depth,separator);
     return this;
   }
   reduce(){
@@ -274,10 +302,11 @@ class Dir2Tree {
     return this;
   }
   map(callback,options={}){
-    this._tree=JavascriptExports.mapfun(callback,options,this._tree);
+    // this._tree=mapfun(callback,options,this._tree);
     return this;
   }
 }
 const dir2tree = (root, options, callbacks=[]) => new Dir2Tree(root, options, callbacks);
 
-module.exports = dir2tree;
+exports.default = dir2tree;
+exports.getRelativePath = getRelativePath;
