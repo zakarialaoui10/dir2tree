@@ -1,13 +1,13 @@
 {
     "name": "dir2tree",
-    "version": "0.3.2",
+    "version": "0.3.3",
     "source": "src/index.js",
     "exports": {
         ".": {
-          "import": "./dist/index.mjs",
-          "require": "./dist/index.cjs"
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.cjs"
         }
-      },
+    },
     "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -35,7 +35,8 @@
     },
     "license": "MIT",
     "dependencies": {
-        "mapfun": "^0.9.17"
+        "mapfun": "^0.9.17",
+        "ziko": "^0.68.2"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^25.0.7",
