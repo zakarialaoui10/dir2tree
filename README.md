@@ -6,7 +6,7 @@
 npm install dir2tree
 ```
 ## Import
-### Common Js
+### Common Js 
 ```js
 const dir2tree=require("dir2tree")
 ```
