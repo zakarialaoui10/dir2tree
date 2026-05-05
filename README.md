@@ -4,7 +4,7 @@
 ## Install ![npm](https://img.shields.io/npm/v/dir2tree)
 ```bash 
 npm install dir2tree
-```
+``` 
 ## Import
 ### Common Js 
 ```js
